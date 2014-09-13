@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width">
-        <title>WSIW</title>
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
-        <link href='reset.css' rel='stylesheet'> 
-        <link href='style.css' rel='stylesheet'> 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    </head>
-    <body>
-        <div class="content">
-            Hej.
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>WSIW</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
+    <link href='reset.css' rel='stylesheet'> 
+    <link href='style.css' rel='stylesheet'> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="overlay"></div>
+    <img src="images/loading.gif" id="loading_image" alt="Loading">
+    <div class="content">
+        <button id="wsiw">WHAT SHOULD I WATCH?</button>
+        <div class="sources">
+            <p class="source_error">We couldn't find that list! Perhaps the user doesn't exist, or is private.</p>
+            Source:
+            <input type="radio" id="r_random" value="random" checked="checked" name="source"><label for="r_random">Random</label>
+            <input type="radio" id="r_watchlist" value="watchlist" name="source"><input type="text" class="trakt_user" placeholder="iamhj"><label for="r_watchlist">'s watchlist</label>
+            <input type="radio" id="r_collection" value="collection" name="source"><input type="text" class="trakt_user" placeholder="iamhj"><label for="r_collection">'s collection </label>
         </div>
-    </body>
+    </div>
+    <a id="whatisthis" href="#">What is this?</a>
+    <div id="about">
+        <img src="images/x.svg" class="closebutton" alt="Close popup">
+        <p>This site intends to help you find a movie to watch! It is powered by <a href="http://trakt.tv" target="_blank">trakt.tv</a>.</p>
+        <p>To begin with, select a source at the bottom. There are three alternatives:
+            <dl>
+                <dt>Random</dt>
+                <dd>Trending movies.</dd>
+                <dt>Watchlist</dt>
+                <dd>The selected user's watchlist. Only works if it is not private.</dd>
+                <dt>Colletion</dt>
+                <dd>The selected user's collection. Only works if it is not private.</dd>
+            </dl>
+        </p>
+        <p>After you have selected a source, simply press the big button and you will be presented with a movie. Simple!</p>
+        <p>The site was made by <a href="http://trakt.tv/user/iamhj">iamhj</a> and is fully available on <a href="http://github.com/iamhj/wsiw">GitHub</a>.</p>
+    </div>
+    <p id="nothappy">Not happy? <a href="#" id="another">Pick a new one</a> or <a href="#" id="newsource">choose another source</a>.</p>
+    <div id="sourceselector">
+        <img src="images/x.svg" class="closebutton" alt="Close popup">
+        <p class="source_error">We couldn't find that list! Perhaps the user doesn't exist, or is private.</p>
+        Source:
+        <input type="radio" id="r_random" value="random" name="source"><label for="r_random">Random</label>
+        <input type="radio" id="r_watchlist" value="watchlist" name="source"><input type="text" class="trakt_user" placeholder="iamhj"><label for="r_watchlist">'s watchlist</label>
+        <input type="radio" id="r_collection" value="collection" name="source"><input type="text" class="trakt_user" placeholder="iamhj"><label for="r_collection">'s collection </label>
+        <button id="selectsource">Select source</button>
+    </div>
+</body>
 </html>

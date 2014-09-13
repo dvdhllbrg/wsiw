@@ -1,8 +1,19 @@
 $(document).ready(function() {
     $('#wsiw').on('click', getMovies);
+    $('label').on('click', function() {
+        $(this).next('input[type=text]').select();
+    });
+    $('input[name=source]').on('click', function() {
+        $('.source_error').hide();
+    });
+    $('.trakt_user').focus(function() {
+        $(this).val('');
+        $(this).prev('input[name=source]').click();
+    });
     $('#another').on('click', chooseMovie);
     $('#newsource').on('click', newSource);
     $('#selectsource').on('click', setSource);
+    $('#whatisthis').on('click', showAbout);
 
     $('.closebutton').on('click', function() {
         $('.closebutton').parent().hide();
@@ -18,7 +29,8 @@ function getMovies() {
     var method;
     var baseURL = 'http://api.trakt.tv';
     var apikey = 'eca8a8e86968052661e1027d3eaeb444';
-    var user ='iamhj';
+    var user = $('input[name=source]:checked').next('input[type=text]').val();
+    var user = typeof user === 'undefined' || user == '' ? 'iamhj' : user;
     var extra = '';
 
     $('#loading_image').show();
@@ -39,13 +51,19 @@ function getMovies() {
 
     }
 
-    var url = baseURL + '/' + method + '/' + apikey + '/' + user + extra;
+    var url = baseURL + '/' + method + '/' + apikey + '/' + user + extra + '?callback=?';
 
-    $.getJSON(url, function(data) {
+    $.getJSON(url).success(function(data) {
+        $('#sourceselector').hide();
         movies = data;
         chooseMovie();
+    }).error(function() {
+        $('.source_error').show();
+    }).complete(function() {
         $('#loading_image').hide();
-        $('.overlay').hide();
+        if(!$('#sourceselector').is(':visible')) {
+            $('.overlay').hide();
+        }
     });
 }
 
@@ -76,10 +94,16 @@ function chooseMovie() {
         $('#movieurl').attr('href', movie.url);
         $('#overview').html(movie.overview);
 
+        $('#whatisthis').hide();
         $('#nothappy').show();
 
         setRatings(movie.imdb_id);
     });
+}
+
+function showAbout() {
+    $('#about').show();
+    $('.overlay').show();
 }
 
 function newSource() {
@@ -90,6 +114,5 @@ function newSource() {
 
 function setSource() {
     source = $('input[name=source]:checked').val();
-    $('#sourceselector').hide();
     getMovies();
 }
