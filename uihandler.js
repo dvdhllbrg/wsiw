@@ -75,7 +75,7 @@ function chooseMovie() {
         $('#overview').html(movie.overview);
 
         $('#what_is_this').hide();
-        $('#nothappy').show();
+        $('#not_happy').show();
 
         getRatings(movie.imdb_id, function(imdbRating, tomatoRating) {
             $('#imdb_rating').html(imdbRating);
