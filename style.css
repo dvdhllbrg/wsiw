@@ -17,7 +17,9 @@ html, body {
 }
 
 body {
-	background: #F9F9F9 no-repeat cover;
+	background-color: #F9F9F9;
+    background-repeat: no-repeat;
+    background-size: cover;
     font-size: 62.5%;
     font-family: 'Roboto';
     color: #333;
