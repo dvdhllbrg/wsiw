@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#wsiw-button').on('click', getMovies);
+    $('#wsiw_button').on('click', getMovies);
     $('label').on('click', function() {
         $(this).next('input[type=text]').select();
     });
