@@ -37,13 +37,13 @@ function getMovies() {
         break;
         case 'collection':
             method = 'user/library/movies/collection.json';
-            extra = 'extended';
+            extra = '/extended';
             break;
         case 'trending':
             method = 'movies/trending.json';
     }
 
-    fetchMovies(user, method, extra, function(state) {
+    fetchMovies(user, method, function(state) {
         $('#loading_image').hide();
 
         if(state == 'success') {
