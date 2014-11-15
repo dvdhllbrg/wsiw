@@ -11,13 +11,12 @@ function fetchMovies(user, method, callback) {
         callback('error');
     })}
 
-function setRatings(id) {
+function setRatings(id, callback) {
     var baseurl = 'http://www.omdbapi.com/?i=';
     var tomatoes = '&tomatoes=true';
     var url = baseurl + id + tomatoes;
 
     $.getJSON(url, function(data) {
-        $('#imdb_rating').html(data.imdbRating);
-        $('#rt_rating').html(data.tomatoRating);
+        callback(data.imdbRating, data.tomatoRating);
     });
 }

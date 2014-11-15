@@ -79,7 +79,10 @@ function chooseMovie() {
         $('#what_is_this').hide();
         $('#nothappy').show();
 
-        setRatings(movie.imdb_id);
+        setRatings(movie.imdb_id, function(imdbRating, tomatoRating) {
+            $('#imdb_rating').html(imdbRating);
+            $('#rt_rating').html(tomatoRating);
+        });
     });
 }
 
