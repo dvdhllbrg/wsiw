@@ -1,7 +1,6 @@
 function fetchMovies(user, method, extra, callback) {
     var baseURL = 'http://api.trakt.tv';
     var apikey = 'eca8a8e86968052661e1027d3eaeb444';
-    var extra = '';
     var url = baseURL + '/' + method + '/' + apikey + '/' + user + extra + '?callback=?';
 
     $.getJSON(url).success(function(data) {
