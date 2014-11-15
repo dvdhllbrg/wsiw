@@ -13,7 +13,7 @@ $(document).ready(function() {
         $(this).prev('input[name=source]').click();
     });
     $('#another').on('click', chooseMovie);
-    $('#newsource').on('click', showSourceSelector);
+    $('#new_source').on('click', showSourceSelector);
     $('#select_source_button').on('click', getMovies);
     $('#what_is_this').on('click', showAbout);
 
@@ -31,7 +31,7 @@ function getMovies() {
     var user = $('input[name=source]:checked').next('input[type=text]').val();
     var user = typeof user === 'undefined' || user == '' ? 'iamhj' : user;
 
-    source = $('input[name=source]:checked').val();
+    var source = $('input[name=source]:checked').val();
     switch (source) {
         case 'watchlist':
         method = 'user/watchlist/movies.json';
