@@ -44,7 +44,20 @@ function getMovies() {
             method = 'movies/trending.json';
     }
 
-    fetchMovies(user, method);
+    fetchMovies(user, method, function(state) {
+        if(state == 'success') {
+            $('#source_selector').hide();
+            chooseMovie();
+        } else if(state == 'error') {
+            $('.source_error').show();
+        }
+
+        $('#loading_image').hide();
+            if(!$('#source_selector').is(':visible')) {
+                $('#overlay').hide();
+            }
+
+    });
 }
 
 function chooseMovie() {
