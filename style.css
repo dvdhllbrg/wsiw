@@ -121,7 +121,11 @@ button:hover {
     margin: 1em auto;
 }
 
-#nothappy, #what_is_this {
+.sources_label {
+    font-weight: bold;
+}
+
+#not_happy, #what_is_this {
     position: absolute;
     top: 1%;
     right: 1%;
@@ -272,5 +276,9 @@ button:hover {
 
     #sources, .source {
         display: list-item;
+    }
+
+    #not_happy, #what_is_this {
+        font-size: 2em;
     }
 }
