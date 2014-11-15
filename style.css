@@ -102,6 +102,8 @@ button:hover {
     bottom: 1%;
     left: 50%;
     transform: translate(-50%);
+    width: 80%;
+    text-align: center;
 }
 
 .source_selector_popup {
@@ -271,8 +273,12 @@ button:hover {
  */
 
 @media screen and (max-width: 767px) {
-    #source_selector, #about {
+    #about {
         width: 80%;
+    }
+
+    #source_selector {
+        text-align: initial;
     }
 
     #sources, .source {
