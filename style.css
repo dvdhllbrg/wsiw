@@ -92,6 +92,14 @@ button:hover {
     transform: translate(-50%);
 }
 
+.source_selector_popup {
+    bottom: initial !important;
+    top: 50%;
+    background: #CCC;
+    padding: 2em;
+    z-index: 999;
+}
+
 #wsiw_button {
     font-size: 3.4em;
     position: absolute;

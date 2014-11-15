@@ -16,8 +16,7 @@ $(document).ready(function() {
     $('#what_is_this').on('click', showAbout);
 
     $('.close_button').on('click', function() {
-        $('.close_button').parent().removeClass('popup');
-        $('.close_button').parent().hide();
+        $('.close_button').parent().hide().removeClass('source_selector_popup');
         $('#overlay').hide();
     });
 
@@ -91,8 +90,9 @@ function showAbout() {
 }
 
 function showSourceSelector() {
-    $('#source_selector').addClass('popup');
-    $('#close_button').show();
+    $('source_selector').addClass('source_selector_popup');
+    $('#source_selector').show();
+    $('#source_selector .close_button').show();
     $('#select_source_button').show();
     $('#overlay').show();
 }
