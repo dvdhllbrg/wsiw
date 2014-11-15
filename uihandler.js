@@ -27,8 +27,19 @@ function getMovies() {
     var user = typeof user === 'undefined' || user == '' ? 'iamhj' : user;
 
     source = $('input[name=source]:checked').val();
+    switch (source) {
+        case 'watchlist':
+        method = 'user/watchlist/movies.json';
+        break;
+        case 'collection':
+            method = 'user/library/movies/collection.json';
+            extra = '/extended';
+            break;
+        case 'random':
+            method = 'movies/trending.json';
+    }
 
-    fetchMovies(user, source);
+    fetchMovies(user, method);
 }
 
 function chooseMovie() {

@@ -1,8 +1,7 @@
 var movies;
 var source = 'watchlist';
 
-function fetchMovies(user, source) {
-    var method;
+function fetchMovies(user, method) {
     var baseURL = 'http://api.trakt.tv';
     var apikey = 'eca8a8e86968052661e1027d3eaeb444';
 
@@ -10,21 +9,6 @@ function fetchMovies(user, source) {
 
     $('#loading_image').show();
     $('#overlay').show();
-
-
-    switch (source) {
-        case 'watchlist':
-        method = 'user/watchlist/movies.json';
-        break;
-        case 'collection':
-            method = 'user/library/movies/collection.json';
-            extra = '/extended';
-            break;
-        case 'random':
-            method = 'movies/trending.json';
-
-
-    }
 
     var url = baseURL + '/' + method + '/' + apikey + '/' + user + extra + '?callback=?';
 
