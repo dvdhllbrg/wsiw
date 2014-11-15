@@ -16,7 +16,7 @@ $(document).ready(function() {
     $('#what_is_this').on('click', showAbout);
 
     $('.close_button').on('click', function() {
-        $('.close_button').parent().hide().removeClass('source_selector_popup');
+        $(this).parent().hide().removeClass('source_selector_popup');
         $('#overlay').hide();
     });
 
