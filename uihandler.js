@@ -13,7 +13,7 @@ $(document).ready(function() {
         $(this).prev('input[name=source]').click();
     });
     $('#another').on('click', chooseMovie);
-    $('#newsource').on('click', newSource);
+    $('#newsource').on('click', showSourceSelector);
     $('#select_source_button').on('click', getMovies);
     $('#what_is_this').on('click', showAbout);
 
@@ -88,7 +88,7 @@ function showAbout() {
     $('#overlay').show();
 }
 
-function newSource() {
+function showSourceSelector() {
     $('#source_selector').show();
     $('#overlay').show();
     $('#ss_' + source).attr('checked', 'checked');
