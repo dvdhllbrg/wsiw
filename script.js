@@ -13,7 +13,7 @@ $(document).ready(function() {
     $('#another').on('click', chooseMovie);
     $('#newsource').on('click', newSource);
     $('#select_source_button').on('click', setSource);
-    $('#whatisthis').on('click', showAbout);
+    $('#what_is_this').on('click', showAbout);
 
     $('.close_button').on('click', function() {
         $('.close_button').parent().hide();
@@ -94,7 +94,7 @@ function chooseMovie() {
         $('#movieurl').attr('href', movie.url);
         $('#overview').html(movie.overview);
 
-        $('#whatisthis').hide();
+        $('#what_is_this').hide();
         $('#nothappy').show();
 
         setRatings(movie.imdb_id);
