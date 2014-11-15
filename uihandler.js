@@ -92,5 +92,7 @@ function showAbout() {
 
 function showSourceSelector() {
     $('#source_selector').addClass('popup');
+    $('#close_button').show();
+    $('#select_source_button').show();
     $('#overlay').show();
 }

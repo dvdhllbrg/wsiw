@@ -155,15 +155,15 @@ button:hover {
  * 3. Popup areas
  */
 
-.popup {
+#about {
     font-size: 1.5em;
     font-weight: 300;
-    background: #CCC !important;
+    background: #CCC;
     position: absolute;
     left: 50%;
-    top: 50% !important;
+    top: 50%;
     transform: translate(-50%, -50%);
-    padding: 2em !important;
+    padding: 2em;
     z-index: 2;
     border-radius: 2px;
 }
