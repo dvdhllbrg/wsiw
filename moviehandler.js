@@ -1,12 +1,11 @@
 var movies;
 var source = 'watchlist';
 
-function getMovies() {
+function fetchMovies(user, source) {
     var method;
     var baseURL = 'http://api.trakt.tv';
     var apikey = 'eca8a8e86968052661e1027d3eaeb444';
-    var user = $('input[name=source]:checked').next('input[type=text]').val();
-    var user = typeof user === 'undefined' || user == '' ? 'iamhj' : user;
+
     var extra = '';
 
     $('#loading_image').show();
