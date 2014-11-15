@@ -109,7 +109,7 @@ function showAbout() {
 function newSource() {
     $('#source_selector').show();
     $('#overlay').show();
-    $('#s_' + source).attr('checked', 'checked');
+    $('#ss_' + source).attr('checked', 'checked');
 }
 
 function setSource() {
