@@ -1,8 +1,9 @@
-var movies;
+var movies, source;
 
 $(document).ready(function() {
     $('#wsiw_button').on('click', getMovies);
     $('input[name=source]').on('click', function() {
+        source = $(this).val();
         $('.source_error').hide();
     });
     $('.trakt_user').focus(function() {
@@ -28,7 +29,6 @@ function getMovies() {
     var user = $('input[name=source]:checked').next('input[type=text]').val();
     var user = typeof user === 'undefined' || user == '' ? 'iamhj' : user;
 
-    var source = $('input[name=source]:checked').val();
     switch (source) {
         case 'watchlist':
         method = 'user/watchlist/movies.json';
