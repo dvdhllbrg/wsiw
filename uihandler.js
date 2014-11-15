@@ -46,7 +46,7 @@ function getMovies() {
         $('#loading_image').hide();
 
         if(state == 'success') {
-            $('#source_selector').hide().removeClass('source_selector_poup');
+            $('#source_selector').hide().removeClass('source_selector_popup');
             chooseMovie();
         } else if(state == 'error') {
             $('.source_error').show();
