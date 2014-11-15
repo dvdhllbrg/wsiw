@@ -2,9 +2,6 @@ var movies;
 
 $(document).ready(function() {
     $('#wsiw_button').on('click', getMovies);
-    $('label').on('click', function() {
-        $(this).next('input[type=text]').select();
-    });
     $('input[name=source]').on('click', function() {
         $('.source_error').hide();
     });
