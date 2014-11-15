@@ -1,3 +1,5 @@
+var movies;
+
 $(document).ready(function() {
     $('#wsiw_button').on('click', getMovies);
     $('label').on('click', function() {
@@ -23,6 +25,9 @@ $(document).ready(function() {
 });
 
 function getMovies() {
+    $('#loading_image').show();
+    $('#overlay').show();
+
     var user = $('input[name=source]:checked').next('input[type=text]').val();
     var user = typeof user === 'undefined' || user == '' ? 'iamhj' : user;
 
