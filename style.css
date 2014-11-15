@@ -97,7 +97,7 @@ button:hover {
     top: 50%;
     background: #CCC;
     padding: 2em;
-    z-index: 999;
+    z-index: 99;
 }
 
 #wsiw_button {
