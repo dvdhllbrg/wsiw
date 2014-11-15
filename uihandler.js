@@ -30,12 +30,14 @@ function getMovies() {
     var user = typeof user === 'undefined' || user == '' ? 'iamhj' : user;
 
     var source = $('input[name=source]:checked').val();
+    var extra = '';
     switch (source) {
         case 'watchlist':
         method = 'user/watchlist/movies.json';
         break;
         case 'collection':
             method = 'user/library/movies/collection.json';
+            extra = 'extended';
             break;
         case 'trending':
             method = 'movies/trending.json';
