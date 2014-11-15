@@ -45,18 +45,15 @@ function getMovies() {
     }
 
     fetchMovies(user, method, function(state) {
+        $('#loading_image').hide();
+
         if(state == 'success') {
             $('#source_selector').hide();
+            $('#overlay').hide();
             chooseMovie();
         } else if(state == 'error') {
             $('.source_error').show();
         }
-
-        $('#loading_image').hide();
-            if(!$('#source_selector').is(':visible')) {
-                $('#overlay').hide();
-            }
-
     });
 }
 
@@ -79,7 +76,7 @@ function chooseMovie() {
         $('#what_is_this').hide();
         $('#nothappy').show();
 
-        setRatings(movie.imdb_id, function(imdbRating, tomatoRating) {
+        getRatings(movie.imdb_id, function(imdbRating, tomatoRating) {
             $('#imdb_rating').html(imdbRating);
             $('#rt_rating').html(tomatoRating);
         });

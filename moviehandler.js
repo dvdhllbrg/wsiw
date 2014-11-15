@@ -11,7 +11,7 @@ function fetchMovies(user, method, callback) {
         callback('error');
     })}
 
-function setRatings(id, callback) {
+function getRatings(id, callback) {
     var baseurl = 'http://www.omdbapi.com/?i=';
     var tomatoes = '&tomatoes=true';
     var url = baseurl + id + tomatoes;
