@@ -94,6 +94,7 @@ button:hover {
 }
 
 #source_selector {
+    background: inherit;
     color: #000;
     font-size: 1.5em;
     font-weight: 300;
@@ -106,7 +107,7 @@ button:hover {
 .source_selector_popup {
     bottom: initial !important;
     top: 50%;
-    background: #CCC;
+    background: #CCC !important;
     padding: 2em;
     z-index: 99;
     transform: translate(-50%, -50%) !important;
