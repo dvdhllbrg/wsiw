@@ -43,7 +43,7 @@ function getMovies() {
             method = 'movies/trending.json';
     }
 
-    fetchMovies(user, method, function(state) {
+    fetchMovies(user, method, extra, function(state) {
         $('#loading_image').hide();
 
         if(state == 'success') {
