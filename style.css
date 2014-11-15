@@ -154,8 +154,8 @@ button:hover {
 }
 
 .trakt_user {
-    width: 3em;
-    text-align: center;
+    width: 5em;
+    text-align: right;
     border: none;
     font-family: inherit;
     font-size: inherit;
@@ -271,12 +271,17 @@ button:hover {
  */
 
 @media screen and (max-width: 767px) {
-    .source_selector_popup, #about {
+    #source_selector, #about {
         width: 80%;
     }
 
     #sources, .source {
         display: list-item;
+    }
+
+    .source {
+        margin-bottom: 2%;
+        font-size: 1.2em;
     }
 
     #not_happy, #what_is_this {
