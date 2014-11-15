@@ -12,7 +12,7 @@ $(document).ready(function() {
     });
     $('#another').on('click', chooseMovie);
     $('#newsource').on('click', newSource);
-    $('#select_source_button').on('click', setSource);
+    $('#select_source_button').on('click', getMovies);
     $('#what_is_this').on('click', showAbout);
 
     $('.close_button').on('click', function() {
@@ -21,6 +21,15 @@ $(document).ready(function() {
     });
 
 });
+
+function getMovies() {
+    var user = $('input[name=source]:checked').next('input[type=text]').val();
+    var user = typeof user === 'undefined' || user == '' ? 'iamhj' : user;
+
+    source = $('input[name=source]:checked').val();
+
+    fetchMovies(user, source);
+}
 
 function chooseMovie() {
     var movie = movies[Math.floor(Math.random()*movies.length)];
@@ -54,9 +63,4 @@ function newSource() {
     $('#source_selector').show();
     $('#overlay').show();
     $('#ss_' + source).attr('checked', 'checked');
-}
-
-function setSource() {
-    source = $('input[name=source]:checked').val();
-    getMovies();
 }
