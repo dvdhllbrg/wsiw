@@ -5,7 +5,6 @@ A site to help you select what movie to watch. Built with Javascript/jQuery and 
 
 Available [here](http://da.vidhallberg.se/wsiw).
 
----
 ##Todo:
 * Trailers
 * More choices for which movies to fetch (only with a certain IMDB rating, etc.)
