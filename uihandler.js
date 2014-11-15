@@ -52,7 +52,7 @@ function getMovies() {
             $('.source_error').show();
         }
 
-        if(!$('#source_selector').is(':visible')) {
+        if(!$('#source_selector').hasClass('source_selector_popup')) {
             $('#overlay').hide();
         }
     });
