@@ -16,8 +16,7 @@ $(document).ready(function() {
     $('#what_is_this').on('click', showAbout);
 
     $('.close_button').on('click', function() {
-        $('.close_button').parent().hide()
-        $('.close_button').parent().removeClass('source_selector_popup');
+        $('.close_button').parent().hide().removeClass('source_selector_popup');
         $('#overlay').hide();
     });
 
@@ -47,7 +46,7 @@ function getMovies() {
         $('#loading_image').hide();
 
         if(state == 'success') {
-            $('#source_selector').hide();
+            $('#source_selector').hide().removeClass('source_selector_poup');
             chooseMovie();
         } else if(state == 'error') {
             $('.source_error').show();
