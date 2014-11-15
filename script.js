@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#wsiw').on('click', getMovies);
+    $('#wsiw-button').on('click', getMovies);
     $('label').on('click', function() {
         $(this).next('input[type=text]').select();
     });
@@ -12,12 +12,12 @@ $(document).ready(function() {
     });
     $('#another').on('click', chooseMovie);
     $('#newsource').on('click', newSource);
-    $('#selectsource').on('click', setSource);
+    $('#select_source_button').on('click', setSource);
     $('#whatisthis').on('click', showAbout);
 
-    $('.closebutton').on('click', function() {
-        $('.closebutton').parent().hide();
-        $('.overlay').hide();
+    $('.close_button').on('click', function() {
+        $('.close_button').parent().hide();
+        $('#overlay').hide();
     });
 
 });
@@ -34,7 +34,7 @@ function getMovies() {
     var extra = '';
 
     $('#loading_image').show();
-    $('.overlay').show();
+    $('#overlay').show();
 
 
     switch (source) {
@@ -54,15 +54,15 @@ function getMovies() {
     var url = baseURL + '/' + method + '/' + apikey + '/' + user + extra + '?callback=?';
 
     $.getJSON(url).success(function(data) {
-        $('#sourceselector').hide();
+        $('#source_selector').hide();
         movies = data;
         chooseMovie();
     }).error(function() {
         $('.source_error').show();
     }).complete(function() {
         $('#loading_image').hide();
-        if(!$('#sourceselector').is(':visible')) {
-            $('.overlay').hide();
+        if(!$('#source_selector').is(':visible')) {
+            $('#overlay').hide();
         }
     });
 }
@@ -103,12 +103,12 @@ function chooseMovie() {
 
 function showAbout() {
     $('#about').show();
-    $('.overlay').show();
+    $('#overlay').show();
 }
 
 function newSource() {
-    $('#sourceselector').show();
-    $('.overlay').show();
+    $('#source_selector').show();
+    $('#overlay').show();
     $('#s_' + source).attr('checked', 'checked');
 }
 
