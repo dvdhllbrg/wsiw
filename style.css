@@ -240,7 +240,7 @@ button:hover {
     margin-right: 2em;
 }
 
-#ratings_icon {
+.ratings_icon {
     width: 24px;
     vertical-align: middle;
 }
