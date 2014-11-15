@@ -90,7 +90,7 @@ function showAbout() {
 }
 
 function showSourceSelector() {
-    $('source_selector').addClass('source_selector_popup');
+    $('#source_selector').addClass('source_selector_popup');
     $('#source_selector').show();
     $('#source_selector .close_button').show();
     $('#select_source_button').show();
