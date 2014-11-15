@@ -40,7 +40,7 @@ function getMovies() {
             method = 'user/library/movies/collection.json';
             extra = '/extended';
             break;
-        case 'random':
+        case 'trending':
             method = 'movies/trending.json';
     }
 
