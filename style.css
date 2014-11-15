@@ -84,6 +84,14 @@ button:hover {
     z-index: 999;
 }
 
+#wsiw_button {
+    font-size: 3.4em;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
 #source_selector {
     color: #000;
     font-size: 1.5em;
@@ -103,12 +111,8 @@ button:hover {
     transform: translate(-50%, -50%);
 }
 
-#wsiw_button {
-    font-size: 3.4em;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%);
+#sources, .source {
+    display: inline;
 }
 
 #select_source_button {
