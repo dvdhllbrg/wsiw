@@ -271,7 +271,7 @@ button:hover {
  */
 
 @media screen and (max-width: 767px) {
-    .source_selector_popup {
+    .source_selector_popup, #about {
         width: 80%;
     }
 
