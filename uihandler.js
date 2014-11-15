@@ -46,10 +46,13 @@ function getMovies() {
 
         if(state == 'success') {
             $('#source_selector').hide();
-            $('#overlay').hide();
             chooseMovie();
         } else if(state == 'error') {
             $('.source_error').show();
+        }
+
+        if(!$('#source_selector').is(':visible')) {
+            $('#overlay').hide();
         }
     });
 }
