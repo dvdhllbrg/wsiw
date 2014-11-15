@@ -5,6 +5,7 @@
  * 2. General UI
  * 3. Popup areas
  * 4. Movie information
+ * 5. Media queries for mobile layout
  *
  */
 
@@ -108,7 +109,7 @@ button:hover {
     background: #CCC;
     padding: 2em;
     z-index: 99;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) !important;
 }
 
 #sources, .source {
@@ -258,4 +259,22 @@ button:hover {
 .ratings_icon {
     width: 24px;
     vertical-align: middle;
+}
+
+/*****************************************************
+ * 5. Media queries for mobile layout
+ */
+
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 100%;
+    }
+
+    #source_selector {
+        width: 90%;
+    }
+
+    #sources, .source {
+        display: list-item;
+    }
 }
