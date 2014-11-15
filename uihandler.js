@@ -1,9 +1,9 @@
-var movies, source;
+var movies;
 
 $(document).ready(function() {
     $('#wsiw_button').on('click', getMovies);
     $('input[name=source]').on('click', function() {
-        source = $(this).val();
+        $('#ss_' + $(this).val()).attr('checked', 'checked');
         $('.source_error').hide();
     });
     $('.trakt_user').focus(function() {
@@ -16,6 +16,7 @@ $(document).ready(function() {
     $('#what_is_this').on('click', showAbout);
 
     $('.close_button').on('click', function() {
+        $('.close_button').parent().removeClass('popup');
         $('.close_button').parent().hide();
         $('#overlay').hide();
     });
@@ -29,6 +30,7 @@ function getMovies() {
     var user = $('input[name=source]:checked').next('input[type=text]').val();
     var user = typeof user === 'undefined' || user == '' ? 'iamhj' : user;
 
+    var source = $('input[name=source]:checked').val();
     switch (source) {
         case 'watchlist':
         method = 'user/watchlist/movies.json';
@@ -89,7 +91,6 @@ function showAbout() {
 }
 
 function showSourceSelector() {
-    $('#source_selector').show();
+    $('#source_selector').addClass('popup');
     $('#overlay').show();
-    $('#ss_' + source).attr('checked', 'checked');
 }

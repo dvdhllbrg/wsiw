@@ -82,7 +82,7 @@ button:hover {
     z-index: 999;
 }
 
-#sources {
+#source_selector {
     color: #000;
     font-size: 1.5em;
     font-weight: 300;
@@ -155,15 +155,15 @@ button:hover {
  * 3. Popup areas
  */
 
-#source_selector, #about {
+.popup {
     font-size: 1.5em;
     font-weight: 300;
-    background: #CCC;
+    background: #CCC !important;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 50% !important;
     transform: translate(-50%, -50%);
-    padding: 2em;
+    padding: 2em !important;
     z-index: 2;
     border-radius: 2px;
 }
