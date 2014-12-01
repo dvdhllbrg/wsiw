@@ -62,7 +62,7 @@
                 <li class="source"><input type="radio" id="s_watchlist" value="watchlist" name="source" ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj" ng-model="wl_user"><label for="s_watchlist">'s watchlist</label></li>
                 <li class="source"><input type="radio" id="s_collection" value="collection" name="source" ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj" ng-model="c_user"><label for="s_collection">'s collection </label></li>
             </ul>
-            <button id="select_source_button" ng-show="sourceSelectorVisible">Select source</button>
+            <button id="select_source_button" ng-show="sourceSelectorVisible" ng-click="getMovies()">Select source</button>
         </div>
     </body>
 </html>

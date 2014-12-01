@@ -23,7 +23,21 @@ function mainController($scope, $http) {
         $scope.showOverlay = true;
         $scope.showLoading = true;
 
-        $scope.setTraktParams();
+        switch ($scope.source) {
+            case 'watchlist':
+                $scope.traktParams.method = 'user/watchlist/movies.json';
+                $scope.traktParams.user = $scope.wl_user;
+                break;
+            case 'collection':
+                $scope.traktParams.method = 'user/library/movies/collection.json';
+                $scope.traktParams.user = $scope.c_user;
+                $scope.traktParams.extra = '/extended';
+                break;
+            case 'trending':
+                $scope.traktParams.method = 'movies/trending.json';
+
+            var user = typeof user === 'undefined' || user == '' ? 'iamhj' : user;
+        }
 
         var url = $scope.traktParams.baseURL + '/' + $scope.traktParams.method + '/' + $scope.traktParams.apikey + '/' + $scope.traktParams.user + $scope.traktParams.extra + '?callback=JSON_CALLBACK';
         $http.jsonp(url)
@@ -44,24 +58,6 @@ function mainController($scope, $http) {
         $scope.setRatings();
         $scope.showLoading = false;
         $scope.showOverlay = false;
-    }
-
-    $scope.setTraktParams = function() {
-        switch ($scope.source) {
-            case 'watchlist':
-                $scope.traktParams.method = 'user/watchlist/movies.json';
-                $scope.traktParams.user = $scope.wl_user;
-                break;
-            case 'collection':
-                $scope.traktParams.method = 'user/library/movies/collection.json';
-                $scope.traktParams.user = $scope.c_user;
-                $scope.traktParams.extra = '/extended';
-                break;
-            case 'trending':
-                $scope.traktParams.method = 'movies/trending.json';
-
-            var user = typeof user === 'undefined' || user == '' ? 'iamhj' : user;
-        }
     }
 
     $scope.setRatings = function() {
