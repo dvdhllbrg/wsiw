@@ -38,7 +38,7 @@ function mainController($scope, $http) {
             })
             .error(function(data) {
                 console.log('Error: ' + data);
-            })
+            });
     };
 
     $scope.createMovie = function() {
