@@ -42,7 +42,7 @@ function mainController($scope, $http) {
     $scope.chooseMovie = function() {
         $scope.showOverlay = true;
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
-        $scope.bodyBackground = $scope.movie.images.fanart;
+        $scope.bodyBackground = 'url(' + $scope.movie.images.fanart + ')';
         $scope.showOverlay = false;
     }
 }
