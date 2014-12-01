@@ -64,6 +64,9 @@ function mainController($scope, $http) {
 
     $scope.setRatings = function() {
         var url = 'http://www.omdbapi.com/?i=' + $scope.movie.imdb_id + '&tomatoes=true&callback=JSON_CALLBACK';
+        if(typeof $scope.movie.ratings == 'undefined') {
+            $scope.movie.ratings = {};
+        }
 
         $http.jsonp(url)
             .success(function(ratings) {
