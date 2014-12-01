@@ -18,7 +18,7 @@
             <button id="wsiw_button" ng-click="getMovies()" ng-hide="movie">WHAT SHOULD I WATCH?</button>
             <div id="info_container" ng-show="movie">
                 <div id="info_container_left">
-                    <img id="poster" src="{{ movie.images.poster }}" alt="Movie poster">
+                    <img id="poster" ng-src="movie.images.poster" alt="Movie poster">
                 </div>
                 <div id="info_container_right">
                     <div id="summary">
