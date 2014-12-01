@@ -6,6 +6,7 @@ function mainController($scope, $http) {
     $scope.movie = null;
     $scope.loading = false;
     $scope.showAbout = false;
+    $scope.bodyBackground = '';
 
     $scope.getMovies = function() {
         var baseURL = 'http://api.trakt.tv';
@@ -41,6 +42,7 @@ function mainController($scope, $http) {
     $scope.chooseMovie = function() {
         $scope.loading = true;
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
+        $scope.bodyBackground = $scope.movie.images.fanart;
         $scope.loading = false;
     }
 }
