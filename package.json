@@ -1,6 +1,6 @@
 {
     "name": "What Should I Watch?",
-    "version": "0.0.0",
+    "version": "0.2.0",
     "description": "A website to help you select what movie to watch. Powered by trakt.tv.",
     "main": "server.js",
     "author": "David Hallberg Jönsson",
