@@ -2,6 +2,8 @@ var wsiw = angular.module('wsiw', []);
 
 function mainController($scope, $http) {
     $scope.source = '';
+    $scope.movies = {};
+    $scope.movie = {};
 
     $http.get('/api/movies')
         .success(function(data) {
@@ -34,12 +36,17 @@ function mainController($scope, $http) {
         $http.jsonp(url)
             .success(function(movies) {
                 $scope.movies = movies;
-                console.log(movies);
+                $scope.chooseMovie();
+                console.log(moviees);
             })
             .error(function(data) {
                 console.log('Error: ' + data);
             });
     };
+
+    $scope.chooseMovie = function() {
+       $movie = movies[Math.floor(Math.random()*movies.length)];
+    }
 
     $scope.createMovie = function() {
         $http.post('/api/movies', $scope.formData)
