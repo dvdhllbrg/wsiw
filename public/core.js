@@ -50,7 +50,21 @@ function mainController($scope, $http) {
     $scope.chooseMovie = function() {
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
         $scope.bodyBackground = {'background-image' : 'url(' + $scope.movie.images.fanart + ')'};
+        $scope.setRatings();
         $scope.showLoading = false;
         $scope.showOverlay = false;
+    }
+
+    $scope.setRatings = function() {
+        var url = 'http://www.omdbapi.com/?i=' + $scope.movie.imdb_id + '&tomatoes=true';
+
+        $http.get(url)
+            .success(function(ratings) {
+                movie.ratings.imdb_rating = ratings.imdbRating;
+                movie.ratings.tomato_rating = ratings.imdbRating;
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
     }
 }
