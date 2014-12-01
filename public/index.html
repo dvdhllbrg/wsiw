@@ -36,9 +36,9 @@
                 </div>
             </div>
         </div>
-        <a id="what_is_this" ng-hide="movie" href="#" ng-click="showAbout = ! showAbout">What is this?</a>
+        <a id="what_is_this" ng-hide="movie" href="#" ng-click="showAbout = true; showOverlay = true">What is this?</a>
         <div id="about" class="popup" ng-show="showAbout">
-            <img src="images/x.svg" class="close_button" alt="Close popup">
+            <img src="images/x.svg" class="close_button" alt="Close popup" ng-click="showAbout = false; showOverlay = false">
             <p>This site intends to help you find a movie to watch! It is powered by <a href="http://trakt.tv" target="_blank">trakt.tv</a>.</p>
             <p>To begin with, select a source at the bottom. There are three alternatives:</p>
             <dl>

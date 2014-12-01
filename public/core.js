@@ -4,7 +4,7 @@ function mainController($scope, $http) {
     $scope.source = '';
     $scope.movies = null;
     $scope.movie = null;
-    $scope.loading = false;
+    $scope.showOverlay = false;
     $scope.showAbout = false;
     $scope.bodyBackground = '';
 
@@ -40,9 +40,9 @@ function mainController($scope, $http) {
     };
 
     $scope.chooseMovie = function() {
-        $scope.loading = true;
+        $scope.showOverlay = true;
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
         $scope.bodyBackground = $scope.movie.images.fanart;
-        $scope.loading = false;
+        $scope.showOverlay = false;
     }
 }
