@@ -3,9 +3,10 @@ What should I watch?
 
 A site to help you select what movie to watch. Built with Javascript/jQuery and powered by [trakt.tv](http://trakt.tv).
 
-Available [here](http://da.vidhallberg.se/wsiw).
+Available [here](http://whatshouldiwat.ch).
 
 ##Todo:
 * Trailers
-* More choices for which movies to fetch (only with a certain IMDB rating, etc.)
-* Redo design in Angular
+* A lot more sources
+* Rewrite frontend in Angular
+* Rewrite backend in Node
