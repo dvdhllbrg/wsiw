@@ -6,12 +6,14 @@ function mainController($scope, $http) {
     $scope.movie = null;
     $scope.sourceError = false;
     $scope.showOverlay = false;
+    $scope.showLoading = false;
     $scope.showAbout = false;
     $scope.bodyBackground = '';
 
     $scope.getMovies = function() {
         $scope.sourceError = false;
         $scope.showOverlay = true;
+        $scope.showLoading = true;
 
         var baseURL = 'http://api.trakt.tv';
         var method = '';
@@ -39,6 +41,7 @@ function mainController($scope, $http) {
                 $scope.chooseMovie();
             })
             .error(function(data) {
+                $scope.showLoading = false;
                 $scope.showOverlay = false;
                 $scope.sourceError = true;
             });
@@ -47,6 +50,7 @@ function mainController($scope, $http) {
     $scope.chooseMovie = function() {
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
         $scope.bodyBackground = {'background-image' : 'url(' + $scope.movie.images.fanart + ')'};
+        $scope.showLoading = false;
         $scope.showOverlay = false;
     }
 }
