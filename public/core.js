@@ -38,8 +38,8 @@ function mainController($scope, $http) {
         }
 
         $scope.traktParams.user = typeof $scope.traktParams.user === 'undefined' || $scope.traktParams.user == '' ? 'iamhj' : $scope.traktParams.user;
-
         var url = $scope.traktParams.baseUrl + '/' + $scope.traktParams.method + '/' + $scope.traktParams.apikey + '/' + $scope.traktParams.user + $scope.traktParams.extra + '?callback=JSON_CALLBACK';
+
         $http.jsonp(url)
             .success(function(movies) {
                 $scope.movies = movies;
