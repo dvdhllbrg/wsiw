@@ -36,8 +36,9 @@ function mainController($scope, $http) {
         $http.jsonp(url)
             .success(function(movies) {
                 $scope.movies = movies;
+                console.log(movies);
+                console.log($scope.movies);
                 $scope.chooseMovie();
-                console.log(moviees);
             })
             .error(function(data) {
                 console.log('Error: ' + data);
@@ -45,7 +46,7 @@ function mainController($scope, $http) {
     };
 
     $scope.chooseMovie = function() {
-       $movie = movies[Math.floor(Math.random()*movies.length)];
+       $scope.movie = $scope.movies[Math.floor(Math.random()*movies.length)];
     }
 
     $scope.createMovie = function() {
