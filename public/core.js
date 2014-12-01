@@ -22,6 +22,7 @@ function mainController($scope, $http) {
         $scope.sourceError = false;
         $scope.showOverlay = true;
         $scope.showLoading = true;
+        $scope.sourceSelectorPopup = false;
 
         switch ($scope.source) {
             case 'watchlist':
