@@ -36,8 +36,8 @@
                 </div>
             </div>
         </div>
-        <a id="what_is_this" class="hidden" href="#">What is this?</a>
-        <div id="about" class="hidden popup">
+        <a id="what_is_this" ng-hide="movie" href="#" ng-click="showAbout = ! showAbout">What is this?</a>
+        <div id="about" class="popup" ng-show="showAbout">
             <img src="images/x.svg" class="close_button" alt="Close popup">
             <p>This site intends to help you find a movie to watch! It is powered by <a href="http://trakt.tv" target="_blank">trakt.tv</a>.</p>
             <p>To begin with, select a source at the bottom. There are three alternatives:</p>
@@ -52,8 +52,8 @@
             <p>After you have selected a source, simply press the big button and you will be presented with a movie. Simple!</p>
             <p>The site was made by <a href="http://trakt.tv/user/iamhj" target="_blank">iamhj</a> and is fully available on <a href="http://github.com/iamhj/wsiw" target="_blank">GitHub</a>.</p>
         </div>
-        <p id="not_happy" class="hidden">Not happy? <a href="#" id="another">Pick a new one</a> or <a href="#" id="new_source">choose another source</a>.</p>
-        <div id="source_selector">
+        <p id="not_happy" class="hidden">Not happy? <a href="#" id="another" ng-click="chooseMovie()">Pick a new one</a> or <a href="#" id="new_source">choose another source</a>.</p>
+        <div id="source_selector" ng-hide="movie">
             <img src="images/x.svg" class="close_button hidden" alt="Close popup">
             <p class="source_error hidden">We couldn't find that list! Perhaps the user doesn't exist, or is private.</p>
             <span class="sources_label">Source:</span>

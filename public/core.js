@@ -5,6 +5,7 @@ function mainController($scope, $http) {
     $scope.movies = null;
     $scope.movie = null;
     $scope.loading = false;
+    $scope.showAbout = false;
 
     $scope.getMovies = function() {
         var baseURL = 'http://api.trakt.tv';
@@ -30,7 +31,6 @@ function mainController($scope, $http) {
         $http.jsonp(url)
             .success(function(movies) {
                 $scope.movies = movies;
-                $scope.loading = true;
                 $scope.chooseMovie();
             })
             .error(function(data) {
@@ -39,7 +39,8 @@ function mainController($scope, $http) {
     };
 
     $scope.chooseMovie = function() {
-       $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
-       $scope.loading = false;
+        $scope.loading = true;
+        $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
+        $scope.loading = false;
     }
 }
