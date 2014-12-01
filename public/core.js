@@ -36,9 +36,10 @@ function mainController($scope, $http) {
                 break;
             case 'trending':
                 $scope.traktParams.method = 'movies/trending.json';
+                break;
         }
 
-        $scope.traktParams.user = typeof $scope.traktParams.user === 'undefined' || $scope.traktParams.user == '' ? 'iamhj' : $scope.traktParams.user;
+        $scope.traktParams.user = (typeof $scope.traktParams.user === 'undefined' || $scope.traktParams.user == '') ? 'iamhj' : $scope.traktParams.user;
         var url = $scope.traktParams.baseUrl + '/' + $scope.traktParams.method + '/' + $scope.traktParams.apikey + '/' + $scope.traktParams.user + $scope.traktParams.extra + '?callback=JSON_CALLBACK';
 
         $http.jsonp(url)
