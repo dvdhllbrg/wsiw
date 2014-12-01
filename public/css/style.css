@@ -91,6 +91,7 @@ button:hover {
     top: 30%;
     left: 50%;
     transform: translate(-50%);
+    cursor: pointer;
 }
 
 #source_selector {
