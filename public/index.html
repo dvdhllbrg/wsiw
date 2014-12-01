@@ -14,7 +14,26 @@
         <div id="overlay" class="hidden"></div>
         <img src="images/loading.gif" class="hidden" id="loading_image" alt="Loading">
         <div class="content">
-            <button id="wsiw_button" ng-click="getMovies()">WHAT SHOULD I WATCH?</button>
+            <button id="wsiw_button" ng-click="getMovies()" ng-hide="movie">WHAT SHOULD I WATCH?</button>
+            <div id="info_container" ng-show="movie">
+                <div id="info_container_left">
+                    <img id="poster" src="{{ movie.images.poster }}" alt="Movie poster">
+                </div>
+                <div id="info_container_right">
+                    <div id="summary">
+                        <span id="year">{{ movie.year }}</span> |
+                        <span id="runtime">{{ movie.runtime }}</span> |
+                        <span id="genres"><span class="genre" ng-repeat="genre in movie.genres">{{ genre }}</span></span> 
+                        <div id="summary_right">
+                            <img class="ratings_icon" src="images/imdb.png" alt="imdb">&nbsp;<span id="imdb_rating"></span>&nbsp;
+                            <img class="ratings_icon" src="images/rt.png" alt="rotten tomatoes">&nbsp;<span id="rt_rating"></span>    
+                        </div>
+                        <span class="clearfix"></span>
+                    </div>
+                    <a href="{{ movie.url }}" id="movieurl" target="_blank"><h1 id="title">{{ movie.title }}</h1></a>
+                    <span id="overview">{{ movie.overview }}</span>
+                </div>
+            </div>
         </div>
         <a id="what_is_this" class="hidden" href="#">What is this?</a>
         <div id="about" class="hidden popup">
@@ -43,26 +62,6 @@
                 <li class="source"><input type="radio" id="s_collection" value="collection" name="source" ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj"><label for="s_collection">'s collection </label></li>
             </ul>
             <button id="select_source_button" class="hidden">Select source</button>
-
-            <div id="info_container" ng-show="movie">
-                <div id="info_container_left">
-                    <img id="poster" src="{{ movie.images.poster }}" alt="Movie poster">
-                </div>
-                <div id="info_container_right">
-                    <div id="summary">
-                        <span id="year">{{ movie.year }}</span> |
-                        <span id="runtime">{{ movie.runtime }}</span> |
-                        <span id="genres"><span class="genre" ng-repeat="genre in movie.genres">{{ genre }}</span></span> 
-                        <div id="summary_right">
-                            <img class="ratings_icon" src="images/imdb.png" alt="imdb">&nbsp;<span id="imdb_rating"></span>&nbsp;
-                            <img class="ratings_icon" src="images/rt.png" alt="rotten tomatoes">&nbsp;<span id="rt_rating"></span>    
-                        </div>
-                        <span class="clearfix"></span>
-                    </div>
-                    <a href="{{ movie.url }}" id="movieurl" target="_blank"><h1 id="title">{{ movie.title }}</h1></a>
-                    <span id="overview">{{ movie.overview }}</span>
-                </div>
-            </div>
         </div>
     </body>
 </html>
