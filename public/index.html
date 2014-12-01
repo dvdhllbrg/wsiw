@@ -61,9 +61,9 @@
             <p>After you have selected a source, simply press the big button and you will be presented with a movie. Simple!</p>
             <p>The site was made by <a href="http://da.vidhallberg.se" target="_blank">David Hallberg Jönsson</a> and is fully available on <a href="http://github.com/iamhj/wsiw" target="_blank">GitHub</a>.</p>
         </div>
-        <p id="not_happy" ng-show="movie">Not happy? <a href="#" id="another" ng-click="chooseMovie()">Pick a new one</a> or <a href="#" id="new_source" ng-click="sourceSelectorPopup = true">choose another source</a>.</p>
+        <p id="not_happy" ng-show="movie">Not happy? <a href="#" id="another" ng-click="chooseMovie()">Pick a new one</a> or <a href="#" id="new_source" ng-click="sourceSelectorPopup = true; showOverlay = true;">choose another source</a>.</p>
         <div id="source_selector" ng-show="sourceSelectorPopup || !movie">
-            <img src="images/x.svg" class="close_button" alt="Close popup" ng-show="sourceSelectorPopup">
+            <img src="images/x.svg" class="close_button" alt="Close popup" ng-show="sourceSelectorPopup" ng-click="sourceSelectorPopup = false; showOverlay = false">
             <p class="source_error" ng-show="sourceError">We couldn't find that list! Perhaps the user doesn't exist, or is private.</p>
             <span class="sources_label">Source:</span>
             <ul id="sources">
