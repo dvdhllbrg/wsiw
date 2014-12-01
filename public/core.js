@@ -4,11 +4,13 @@ function mainController($scope, $http) {
     $scope.source = '';
     $scope.movies = null;
     $scope.movie = null;
+    $scope.sourceError = false;
     $scope.showOverlay = false;
     $scope.showAbout = false;
     $scope.bodyBackground = '';
 
     $scope.getMovies = function() {
+        $scope.sourceError = false;
         $scope.showOverlay = true;
 
         var baseURL = 'http://api.trakt.tv';
@@ -37,7 +39,8 @@ function mainController($scope, $http) {
                 $scope.chooseMovie();
             })
             .error(function(data) {
-                console.log('Error: ' + data);
+                $scope.showOverlay = false;
+                $scope.sourceError = true;
             });
     };
 
