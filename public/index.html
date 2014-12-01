@@ -11,7 +11,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
         <script src="core.js"></script>
     </head>
-    <body ng-controller="mainController" ng-style="bodyBackground">
+    <body ng-controller="mainController" style="background-image: url('{{bodyBackground}}')">
         <div id="overlay" ng-show="showOverlay"></div>
         <img src="images/loading.gif" class="hidden" id="loading_image" alt="Loading">
         <div class="content">

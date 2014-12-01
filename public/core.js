@@ -6,7 +6,7 @@ function mainController($scope, $http) {
     $scope.movie = null;
     $scope.showOverlay = false;
     $scope.showAbout = false;
-    $scope.bodyBackground = {};
+    $scope.bodyBackground = '';
 
     $scope.getMovies = function() {
         var baseURL = 'http://api.trakt.tv';
@@ -42,7 +42,8 @@ function mainController($scope, $http) {
     $scope.chooseMovie = function() {
         $scope.showOverlay = true;
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
-        $scope.bodyBackground = {background: "url(" + $scope.movie.images.fanart + ") no-repeat cover"};
+        //$scope.bodyBackground = {background: "url(" + $scope.movie.images.fanart + ") no-repeat cover"};
+        $scope.bodyBackground = $şcope.movie.images.fanart;
         $scope.showOverlay = false;
     }
 }
