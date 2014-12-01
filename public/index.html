@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Movie</title>
-        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/style.css">
         <style>
             html {
                 overflow-y: scroll;
@@ -21,42 +22,42 @@
         <script src="core.js"></script>
     </head>
     <body ng-controller="mainController">
-        <div class="container">
-            <input type="radio" id="trending" value="trending" name="source" checked="checked" ng-model="source">
-            <label for="trending">Trending</label>
-            <input type="radio" id="watchlist" value="watchlist" name="source" ng-model="source">
-            <label for="watchlist">Watchlist</label>
-            <input type="radio" id="collection" value="collection" name="source" ng-model="source">
-            <label for="collection">Collection</label>
-            <br>
-            <button type="submit" class="btn btn-primary btn-lg" ng-click="getMovies()">Get movies</button>
-            <div class="checkbox" ng-repeat="movie in movies">
-                {{ movie.title }}
-            </div>
-
-            <!--<div class="jumbotron text-center">-->
-                <!--<h1>{{ movies.length }}</span></h1>-->
-            <!--</div>-->
-            <!--<div id="todo-list" class="row">-->
-                <!--<div class="col-sm-4 col-sm-offset-4">-->
-                    <!--<div class="checkbox" ng-repeat="movie in movies">-->
-                        <!--<label>-->
-                            <!--<input type="checkbox" ng-click="deleteMovie(movie._id)"> {{ movie.title }}-->
-                        <!--</label>-->
-                    <!--</div>-->
-                <!--</div>-->
-        <!--</div>-->
-        <!--<div id="todo-form" class="row">-->
-            <!--<div class="col-sm-8 col-sm-offset-2 text-center">-->
-                <!--<form>-->
-                    <!--<div class="form-group">-->
-                        <!--<input type="text" class="form-controll input-lg text-center" placeholder="Jag vill göra något." ng-model="formData.title">-->
-                    <!--</div>-->
-                    <!--<button type="submit" class="btn btn-primary btn-lg" ng-click="createMovie()">Add</button>-->
-                <!--</form>-->
-            <!--</div>-->
-        <!--</div>-->
-    </div>
+        <div ng-repeat="movie in movies">
+            {{ movie.title }}
+        </div>
+        <div id="overlay" class="hidden"></div>
+        <img src="images/loading.gif" class="hidden" id="loading_image" alt="Loading">
+        <div class="content">
+            <button id="wsiw_button">WHAT SHOULD I WATCH?</button>
+        </div>
+        <a id="what_is_this" class="hidden" href="#">What is this?</a>
+        <div id="about" class="hidden popup">
+            <img src="images/x.svg" class="close_button" alt="Close popup">
+            <p>This site intends to help you find a movie to watch! It is powered by <a href="http://trakt.tv" target="_blank">trakt.tv</a>.</p>
+            <p>To begin with, select a source at the bottom. There are three alternatives:</p>
+            <dl>
+                <dt>Trending</dt>
+                <dd>Trending movies.</dd>
+                <dt>Watchlist</dt>
+                <dd>The selected user's watchlist. Only works if it is not private.</dd>
+                <dt>Colletion</dt>
+                <dd>The selected user's collection. Only works if it is not private. This may take a long time if the collection is big.</dd>
+            </dl>
+            <p>After you have selected a source, simply press the big button and you will be presented with a movie. Simple!</p>
+            <p>The site was made by <a href="http://trakt.tv/user/iamhj" target="_blank">iamhj</a> and is fully available on <a href="http://github.com/iamhj/wsiw" target="_blank">GitHub</a>.</p>
+        </div>
+        <p id="not_happy" class="hidden">Not happy? <a href="#" id="another">Pick a new one</a> or <a href="#" id="new_source">choose another source</a>.</p>
+        <div id="source_selector">
+            <img src="images/x.svg" class="close_button hidden" alt="Close popup">
+            <p class="source_error hidden">We couldn't find that list! Perhaps the user doesn't exist, or is private.</p>
+            <span class="sources_label">Source:</span>
+            <ul id="sources">
+                <li class="source"><input type="radio" id="s_trending" value="trending" name="source" checked="checked" ng-model="source"><label for="s_trending">Trending</label></li>
+                <li class="source"><input type="radio" id="s_watchlist" value="watchlist" name="source" ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj"><label for="s_watchlist">'s watchlist</label></li>
+                <li class="source"><input type="radio" id="s_collection" value="collection" name="source" ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj"><label for="s_collection">'s collection </label></li>
+            </ul>
+            <button id="select_source_button" class="hidden">Select source</button>
+        </div>
     </body>
 </html>
 
