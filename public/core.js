@@ -46,7 +46,7 @@ function mainController($scope, $http) {
     };
 
     $scope.chooseMovie = function() {
-       $scope.movie = $scope.movies[Math.floor(Math.random()*movies.length)];
+       $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
     }
 
     $scope.createMovie = function() {
