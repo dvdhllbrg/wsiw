@@ -6,7 +6,7 @@ function mainController($scope, $http) {
     $scope.movie = null;
     $scope.showOverlay = false;
     $scope.showAbout = false;
-    $scope.bodyBackground = '';
+    $scope.bodyBackground = {};
 
     $scope.getMovies = function() {
         var baseURL = 'http://api.trakt.tv';
