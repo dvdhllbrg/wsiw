@@ -61,8 +61,8 @@
             <p>After you have selected a source, simply press the big button and you will be presented with a movie. Simple!</p>
             <p>The site was made by <a href="http://da.vidhallberg.se" target="_blank">David Hallberg Jönsson</a> and is fully available on <a href="http://github.com/iamhj/wsiw" target="_blank">GitHub</a>.</p>
         </div>
-        <p id="not_happy" ng-show="movie">Not happy? <a href="#" id="another" ng-click="chooseMovie()">Pick a new one</a> or <a href="#" id="new_source" ng-click="sourceSelectorVisible">choose another source</a>.</p>
-        <div id="source_selector" ng-hide="movie">
+        <p id="not_happy" ng-show="movie">Not happy? <a href="#" id="another" ng-click="chooseMovie()">Pick a new one</a> or <a href="#" id="new_source" ng-click="sourceSelectorVisible = true">choose another source</a>.</p>
+        <div id="source_selector" ng-show="sourceSelectorVisible">
             <img src="images/x.svg" class="close_button" alt="Close popup" ng-show="sourceSelectorVisible">
             <p class="source_error" ng-show="sourceError">We couldn't find that list! Perhaps the user doesn't exist, or is private.</p>
             <span class="sources_label">Source:</span>
@@ -71,7 +71,7 @@
                 <li class="source"><input type="radio" id="s_watchlist" value="watchlist" name="source" ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj" ng-model="wl_user"><label for="s_watchlist">'s watchlist</label></li>
                 <li class="source"><input type="radio" id="s_collection" value="collection" name="source" ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj" ng-model="c_user"><label for="s_collection">'s collection </label></li>
             </ul>
-            <button id="select_source_button" ng-show="sourceSelectorVisible" ng-click="getMovies()">Select source</button>
+            <button id="select_source_button" ng-show="sourceSelectorVisible && !movie" ng-click="getMovies()">Select source</button>
         </div>
     </body>
 </html>

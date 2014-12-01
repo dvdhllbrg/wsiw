@@ -15,10 +15,11 @@ function mainController($scope, $http) {
     $scope.showOverlay = false;
     $scope.showLoading = false;
     $scope.showAbout = false;
-    $scope.sourceSelectorVisible = false;
+    $scope.sourceSelectorVisible = true;
     $scope.bodyBackground = '';
 
     $scope.getMovies = function() {
+        $scope.sourceSelectorVisible = false;
         $scope.sourceError = false;
         $scope.showOverlay = true;
         $scope.showLoading = true;
