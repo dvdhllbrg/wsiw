@@ -1,9 +1,9 @@
 {
-    "name": "node-todo",
+    "name": "What Should I Watch?",
     "version": "0.0.0",
-    "description": "Simple todo application",
+    "description": "A website to help you select what movie to watch. Powered by trakt.tv.",
     "main": "server.js",
-    "author": "Not Scotch",
+    "author": "David Hallberg Jönsson",
     "dependencies": {
         "express": "~4.7.2",
         "mongoose": "~3.6.2",
