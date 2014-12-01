@@ -2,8 +2,8 @@ var wsiw = angular.module('wsiw', []);
 
 function mainController($scope, $http) {
     $scope.source = '';
-    $scope.movies = {};
-    $scope.movie = {};
+    $scope.movies = null;
+    $scope.movie = null;
 
     $http.get('/api/movies')
         .success(function(data) {
