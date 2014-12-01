@@ -6,16 +6,6 @@ function mainController($scope, $http) {
     $scope.movie = null;
     $scope.loading = false;
 
-    $http.get('/api/movies')
-        .success(function(data) {
-            $scope.movies = data;
-            console.log(data);
-        })
-        .error(function(data) {
-            console.log('Error ' + data);
-        });
-
-
     $scope.getMovies = function() {
         var baseURL = 'http://api.trakt.tv';
         var method = '';
@@ -52,27 +42,4 @@ function mainController($scope, $http) {
        $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
        $scope.loading = false;
     }
-
-    $scope.createMovie = function() {
-        $http.post('/api/movies', $scope.formData)
-            .success(function(data) {
-                $scope.formData = {};
-                $scope.movies = data;
-                console.log(data);
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
-    };
-
-    $scope.deleteMovie = function(id) {
-        $http.delete('/api/movies/' + id)
-            .success(function(data) {
-                $scope.movies = data;
-                console.log(data);
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
-    };
 }
