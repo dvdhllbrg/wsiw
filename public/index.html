@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>What Should I Watch?</title>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/style.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
@@ -11,7 +12,7 @@
         <script src="core.js"></script>
     </head>
     <body ng-controller="mainController">
-        <div id="overlay" class="hidden"></div>
+        <div id="overlay" ng-show="loading"></div>
         <img src="images/loading.gif" class="hidden" id="loading_image" alt="Loading">
         <div class="content">
             <button id="wsiw_button" ng-click="getMovies()" ng-hide="movie">WHAT SHOULD I WATCH?</button>
