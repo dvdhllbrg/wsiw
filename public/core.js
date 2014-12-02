@@ -24,34 +24,49 @@ function mainController($scope, $http) {
         $scope.showLoading = true;
         $scope.sourceSelectorPopup = false;
 
-        switch ($scope.source) {
-            case 'watchlist':
-                $scope.traktParams.method = 'user/watchlist/movies.json';
-                $scope.traktParams.user = $scope.wl_user;
-                break;
-            case 'collection':
-                $scope.traktParams.method = 'user/library/movies/collection.json';
-                $scope.traktParams.user = $scope.c_user;
-                $scope.traktParams.extra = '/extended';
-                break;
-            case 'trending':
-                $scope.traktParams.method = 'movies/trending.json';
-                break;
+        if($scope.source = 'top250') {
+            var url = 'http://localhost/api/movies';
+            $http.get(url)
+                .success(function(movies) {
+                    $scope.movies = movies;
+                    $scope.chooseMovies;
+                })
+                .error(function(data) {
+                    $scope.showLoading = false;
+                    $scope.showOverlay = false;
+                    $scope.sourceError = true;
+                });
         }
+        else {
+            switch ($scope.source) {
+                case 'watchlist':
+                    $scope.traktParams.method = 'user/watchlist/movies.json';
+                    $scope.traktParams.user = $scope.wl_user;
+                    break;
+                case 'collection':
+                    $scope.traktParams.method = 'user/library/movies/collection.json';
+                    $scope.traktParams.user = $scope.c_user;
+                    $scope.traktParams.extra = '/extended';
+                    break;
+                case 'trending':
+                    $scope.traktParams.method = 'movies/trending.json';
+                    break;
+            }
 
-        $scope.traktParams.user = (typeof $scope.traktParams.user === 'undefined' || $scope.traktParams.user == '') ? 'iamhj' : $scope.traktParams.user;
-        var url = $scope.traktParams.baseUrl + '/' + $scope.traktParams.method + '/' + $scope.traktParams.apikey + '/' + $scope.traktParams.user + $scope.traktParams.extra + '?callback=JSON_CALLBACK';
+            $scope.traktParams.user = (typeof $scope.traktParams.user === 'undefined' || $scope.traktParams.user == '') ? 'iamhj' : $scope.traktParams.user;
+            var url = $scope.traktParams.baseUrl + '/' + $scope.traktParams.method + '/' + $scope.traktParams.apikey + '/' + $scope.traktParams.user + $scope.traktParams.extra + '?callback=JSON_CALLBACK';
 
-        $http.jsonp(url)
-            .success(function(movies) {
-                $scope.movies = movies;
-                $scope.chooseMovie();
-            })
-            .error(function(data) {
-                $scope.showLoading = false;
-                $scope.showOverlay = false;
-                $scope.sourceError = true;
-            });
+            $http.jsonp(url)
+                .success(function(movies) {
+                    $scope.movies = movies;
+                    $scope.chooseMovie();
+                })
+                .error(function(data) {
+                    $scope.showLoading = false;
+                    $scope.showOverlay = false;
+                    $scope.sourceError = true;
+                });
+        }
     };
 
     $scope.chooseMovie = function() {
