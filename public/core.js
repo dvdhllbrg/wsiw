@@ -31,7 +31,7 @@ function mainController($scope, $http) {
                     for(var i=0; i<movies.length; i++) {
                         $scope.movies[i] = movies[i].movie;
                     }
-                    $scope.chooseMovies();
+                    $scope.chooseMovie();
                 })
                 .error(function(data) {
                     $scope.showLoading = false;
