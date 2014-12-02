@@ -71,7 +71,7 @@ function mainController($scope, $http) {
         $http.jsonp(url)
             .success(function(ratings) {
                 $scope.movie.ratings.imdb_rating = ratings.imdbRating;
-                $scope.movie.ratings.tomato_rating = ratings.imdbRating;
+                $scope.movie.ratings.tomato_rating = ratings.tomatoRating;
             })
             .error(function(data) {
                 console.log('Error: ' + data);
