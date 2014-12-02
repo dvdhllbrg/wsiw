@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-var Todo = mongoose.model('Movie', {
+var Movie = mongoose.model('Movie', {
     title : String
 });
 
@@ -29,7 +29,7 @@ console.log('Magic happens on port 80!');
 
 // Routes
 app.get('/api/movies', function(req, res) {
-    Todo.find(function(err, movies) {
+    Movie.find(function(err, movies) {
         if(err) {
             res.send(err);
         }
@@ -38,7 +38,7 @@ app.get('/api/movies', function(req, res) {
 });
 
 app.post('/api/movies', function(req, res) {
-    Todo.create({
+    Movie.create({
         title: req.body.title,
         done: false
     }, function(err, todo) {
@@ -46,7 +46,7 @@ app.post('/api/movies', function(req, res) {
             res.send(err);
         }
 
-        Todo.find(function(err, movies) {
+        Movie.find(function(err, movies) {
             if(err) {
                 res.send(err);
             }
@@ -56,14 +56,14 @@ app.post('/api/movies', function(req, res) {
 });
 
 app.delete('/api/movies/:movie_id', function(req, res) {
-    Todo.remove({
+    Movie.remove({
         _id : req.params.movie_id
     }, function(err, todo) {
         if(err) {
             res.send(err);
         }
 
-        Todo.find(function(err, movies) {
+        Movie.find(function(err, movies) {
             if(err) {
                 res.send(err);
             }
