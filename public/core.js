@@ -9,7 +9,7 @@ function mainController($scope, $http) {
         'user' : '',
         'extra' : ''
     }
-    $scope.movies = null;
+    $scope.movies = {};
     $scope.movie = null;
     $scope.sourceError = false;
     $scope.showOverlay = false;
@@ -28,8 +28,10 @@ function mainController($scope, $http) {
             var url = 'http://whatshouldiwat.ch/api/movies';
             $http.get(url)
                 .success(function(movies) {
-                    $scope.movies = movies;
-                    $scope.chooseMovies;
+                    for(var i=0; i<movies.length; i++) {
+                        $scope.movies[i] = movies[i].movie:
+                    }
+                    $scope.chooseMovies();
                 })
                 .error(function(data) {
                     $scope.showLoading = false;
