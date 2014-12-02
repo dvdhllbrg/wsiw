@@ -10,7 +10,7 @@ function mainController($scope, $http) {
         'extra' : ''
     }
     $scope.movies = {};
-    $scope.movie = {};
+    $scope.movie = null;
     $scope.sourceError = false;
     $scope.showOverlay = false;
     $scope.showLoading = false;
