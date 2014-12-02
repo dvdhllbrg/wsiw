@@ -29,7 +29,7 @@ function mainController($scope, $http) {
             $http.get(url)
                 .success(function(movies) {
                     for(var i=0; i<movies.length; i++) {
-                        $scope.movies[i] = movies[i].movie:
+                        $scope.movies[i] = movies[i].movie;
                     }
                     $scope.chooseMovies();
                 })
