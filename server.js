@@ -6,7 +6,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 
-mongoose.connect('mongodb://localhost/movies');
+mongoose.connect('mongodb://localhost/wsiw');
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
@@ -20,15 +20,18 @@ app.use(function(req, res, next) {
   next();
 });
 
-var Movie = mongoose.model('Movie', {
-    movie : Object
+var movieSchema = mongoose.Schema( {
+    movie: Object
+}, {
+    collection : 'top250'
 });
+var Movie = mongoose.model('Movie', movieSchema);
 
 app.listen(80);
 console.log('Magic happens on port 80!');
 
 // Routes
-app.get('/api/movies/:collection', function(req, res) {
+app.get('/api/movies', function(req, res) {
     Movie.find(function(err, movies) {
         if(err) {
             res.send(err);
