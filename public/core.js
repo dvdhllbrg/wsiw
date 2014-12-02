@@ -9,7 +9,7 @@ function mainController($scope, $http) {
         'user' : '',
         'extra' : ''
     }
-    $scope.movies = {};
+    $scope.movies = [];
     $scope.movie = null;
     $scope.sourceError = false;
     $scope.showOverlay = false;
