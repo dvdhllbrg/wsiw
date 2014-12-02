@@ -36,8 +36,8 @@
                         <span id="runtime">{{ movie.runtime }}</span> |
                         <span id="genres"><span class="genre" ng-repeat="genre in movie.genres">{{ genre }} </span></span> 
                         <div id="summary_right">
-                            <img class="ratings_icon" src="images/imdb.png" alt="imdb">&nbsp;<span id="imdb_rating">{{ movie.ratings.imdb_rating }}</span>&nbsp;
-                            <img class="ratings_icon" src="images/rt.png" alt="rotten tomatoes">&nbsp;<span id="rt_rating">{{ movie.ratings.tomato_rating }}</span>    
+                            <img class="ratings_icon" src="images/imdb.png" alt="imdb" ng-show="movie.ratings.imdb_rating">&nbsp;<span id="imdb_rating">{{ movie.ratings.imdb_rating }}</span>&nbsp;
+                            <img class="ratings_icon" src="images/rt.png" alt="rotten tomatoes" ng-show="movie.ratings.tomato_rating">&nbsp;<span id="rt_rating">{{ movie.ratings.tomato_rating }}</span>    
                         </div>
                         <span class="clearfix"></span>
                     </div>
