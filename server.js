@@ -22,8 +22,6 @@ app.use(function(req, res, next) {
 
 var movieSchema = mongoose.Schema( {
     movie: Object
-}, {
-    collection : 'top250'
 });
 var Movie = mongoose.model('Movie', movieSchema);
 
