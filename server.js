@@ -20,7 +20,12 @@ app.use(function(req, res, next) {
   next();
 });
 
-var Movie = mongoose.model('Movie');
+var movieSchema = mongoose.Schema( {
+    movie: Object
+}, {
+    collection : 'top250'
+});
+var Movie = mongoose.model('Movie', movieSchema);
 
 app.listen(80);
 console.log('Magic happens on port 80!');
