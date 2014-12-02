@@ -21,54 +21,19 @@ app.use(function(req, res, next) {
 });
 
 var Movie = mongoose.model('Movie', {
-    title : String
+    movie : Object
 });
 
 app.listen(80);
 console.log('Magic happens on port 80!');
 
 // Routes
-app.get('/api/movies', function(req, res) {
+app.get('/api/movies/:collection', function(req, res) {
     Movie.find(function(err, movies) {
         if(err) {
             res.send(err);
         }
         res.json(movies);
-    });
-});
-
-app.post('/api/movies', function(req, res) {
-    Movie.create({
-        title: req.body.title,
-        done: false
-    }, function(err, todo) {
-        if(err) {
-            res.send(err);
-        }
-
-        Movie.find(function(err, movies) {
-            if(err) {
-                res.send(err);
-            }
-            res.json(movies);
-        });
-    });
-});
-
-app.delete('/api/movies/:movie_id', function(req, res) {
-    Movie.remove({
-        _id : req.params.movie_id
-    }, function(err, todo) {
-        if(err) {
-            res.send(err);
-        }
-
-        Movie.find(function(err, movies) {
-            if(err) {
-                res.send(err);
-            }
-            res.json(movies);
-        });
     });
 });
 
