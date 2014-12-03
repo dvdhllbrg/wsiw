@@ -80,13 +80,13 @@ function mainController($scope, $http) {
     }
 
     $scope.setRatings = function() {
-        $scope.movie.ratings.imdb_rating = '';
-        $scope.movie.ratings.tomato_rating = '';
-        var url = 'http://www.omdbapi.com/?i=' + $scope.movie.imdb_id + '&tomatoes=true&callback=JSON_CALLBACK';
+                var url = 'http://www.omdbapi.com/?i=' + $scope.movie.imdb_id + '&tomatoes=true&callback=JSON_CALLBACK';
         if(typeof $scope.movie.ratings == 'undefined') {
             $scope.movie.ratings = {};
         }
         if(typeof $scope.movie.ratings.imdb_rating != 'undefined' && $scope.movie.ratings.imdb_rating != '' && typeof $scope.movie.ratings.tomato_rating != 'undefined' && $scope.movie.ratings.tomato_rating != '') {
+            $scope.movie.ratings.imdb_rating = '';
+            $scope.movie.ratings.tomato_rating = '';
 
             $http.jsonp(url)
                 .success(function(ratings) {
