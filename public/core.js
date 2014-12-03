@@ -72,8 +72,10 @@ function mainController($scope, $http) {
     };
 
     $scope.chooseMovie = function() {
-        $scope.movie.ratings.imdb_rating = '';
-        $scope.movie.ratings.tomato_rating = '';
+        if(typeof $scope.movie.ratings != 'undefined') {
+            $scope.movie.ratings.imdb_rating = '';
+            $scope.movie.ratings.tomato_rating = '';
+        }
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
         $scope.bodyBackground = {'background-image' : 'url(' + $scope.movie.images.fanart + ')'};
         $scope.setRatings();
@@ -82,7 +84,7 @@ function mainController($scope, $http) {
     }
 
     $scope.setRatings = function() {
-                var url = 'http://www.omdbapi.com/?i=' + $scope.movie.imdb_id + '&tomatoes=true&callback=JSON_CALLBACK';
+        var url = 'http://www.omdbapi.com/?i=' + $scope.movie.imdb_id + '&tomatoes=true&callback=JSON_CALLBACK';
         if(typeof $scope.movie.ratings == 'undefined') {
             $scope.movie.ratings = {};
         }
