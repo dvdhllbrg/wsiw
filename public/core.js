@@ -72,7 +72,7 @@ function mainController($scope, $http) {
     };
 
     $scope.chooseMovie = function() {
-        if(typeof $scope.movie.ratings != 'undefined') {
+        if(typeof $scope.movie != 'undefined') {
             $scope.movie.ratings.imdb_rating = '';
             $scope.movie.ratings.tomato_rating = '';
         }
