@@ -49,7 +49,7 @@
         <a id="what_is_this" ng-hide="movie" href="#" ng-click="showAbout = true; showOverlay = true">What is this?</a>
         <div id="about" class="popup" ng-show="showAbout">
             <img src="images/x.svg" class="close_button" alt="Close popup" ng-click="showAbout = false; showOverlay = false">
-            <p>This site intends to help you find a movie to watch! It is powered by <a href="http://trakt.tv" target="_blank">trakt.tv</a>.</p>
+            <p>This site intends to help you find a movie to watch!</p>
             <p>To begin with, select a source at the bottom. There are three alternatives:</p>
             <dl>
                 <dt>Trending</dt>
@@ -58,9 +58,13 @@
                 <dd>The selected user's watchlist. Only works if it is not private.</dd>
                 <dt>Colletion</dt>
                 <dd>The selected user's collection. Only works if it is not private. This may take a long time if the collection is big.</dd>
+                <dt>IMDb top 250</dt>
+                <dd>The IMDb top 250 list..</dd>
+
             </dl>
             <p>After you have selected a source, simply press the big button and you will be presented with a movie. Simple!</p>
-            <p>The site was made by <a href="http://da.vidhallberg.se" target="_blank">David Hallberg Jönsson</a> and is fully available on <a href="http://github.com/iamhj/wsiw" target="_blank">GitHub</a>.</p>
+            <p>This site is powered by <a href="http://trakt.tv" target="_blank">trakt.tv</a> and the <a target="_blank" href="http://omdbapi.com">OMDb API</a>.</p>
+            <p>It was made by <a href="http://da.vidhallberg.se" target="_blank">David Hallberg Jönsson</a> and is fully available on <a href="http://github.com/iamhj/wsiw" target="_blank">GitHub</a>.</p>
         </div>
         <p id="not_happy" ng-show="movie">Not happy? <a href="#" id="another" ng-click="chooseMovie()">Pick a new one</a> or <a href="#" id="new_source" ng-click="sourceSelectorPopup = true; showOverlay = true;">choose another source</a>.</p>
         <div id="source_selector" ng-show="sourceSelectorPopup || !movie" ng-class="{source_selector_popup : sourceSelectorPopup}">
