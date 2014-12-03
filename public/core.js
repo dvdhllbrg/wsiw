@@ -72,10 +72,6 @@ function mainController($scope, $http) {
     };
 
     $scope.chooseMovie = function() {
-        if(typeof $scope.movie != 'undefined') {
-            $scope.movie.ratings.imdb_rating = '';
-            $scope.movie.ratings.tomato_rating = '';
-        }
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
         $scope.bodyBackground = {'background-image' : 'url(' + $scope.movie.images.fanart + ')'};
         $scope.setRatings();
