@@ -5,10 +5,12 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var compress = require('compression');
 
 mongoose.connect('mongodb://localhost/wsiw');
 
 app.use(express.static(__dirname + '/public'));
+app.use(compress());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ 'extended' : 'true' }));
 app.use(bodyParser.json());
