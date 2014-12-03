@@ -59,12 +59,12 @@
                 <dt>Colletion</dt>
                 <dd>The selected user's collection. Only works if it is not private. This may take a long time if the collection is big.</dd>
                 <dt>IMDb top 250</dt>
-                <dd>The IMDb top 250 list..</dd>
+                <dd>The IMDb top 250 list.</dd>
 
             </dl>
             <p>After you have selected a source, simply press the big button and you will be presented with a movie. Simple!</p>
-            <p>This site is powered by <a href="http://trakt.tv" target="_blank">trakt.tv</a> and the <a target="_blank" href="http://omdbapi.com">OMDb API</a>.</p>
-            <p>It was made by <a href="http://da.vidhallberg.se" target="_blank">David Hallberg Jönsson</a> and is fully available on <a href="http://github.com/iamhj/wsiw" target="_blank">GitHub</a>.</p>
+            <p>This site is powered by <a href="http://trakt.tv" target="_blank">trakt.tv</a> and the <a target="_blank" href="http://omdbapi.com">OMDb API</a>.
+            It was made by <a href="http://da.vidhallberg.se" target="_blank">David Hallberg Jönsson</a> and is fully available on <a href="http://github.com/iamhj/wsiw" target="_blank">GitHub</a>.</p>
         </div>
         <p id="not_happy" ng-show="movie">Not happy? <a href="#" id="another" ng-click="chooseMovie()">Pick a new one</a> or <a href="#" id="new_source" ng-click="sourceSelectorPopup = true; showOverlay = true;">choose another source</a>.</p>
         <div id="source_selector" ng-show="sourceSelectorPopup || !movie" ng-class="{source_selector_popup : sourceSelectorPopup}">
