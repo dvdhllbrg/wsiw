@@ -29,8 +29,6 @@ var movieSchema = mongoose.Schema( {
 });
 var Movie = mongoose.model('Movie', movieSchema);
 
-app.listen(80);
-console.log('Magic happens on port 80!');
 
 // Routes
 app.get('/api/movies', function(req, res) {
@@ -43,7 +41,14 @@ app.get('/api/movies', function(req, res) {
 });
 
 // Application
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
     res.sendfile('.public/index.html');
 });
 
+// 404
+app.get('*', function(req, res) {
+    res.status(404).sendfile('/opt/mean/wsiw/public/404.html');
+});
+
+app.listen(80);
+console.log('Magic happens on port 80!');
