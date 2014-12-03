@@ -72,6 +72,8 @@ function mainController($scope, $http) {
     };
 
     $scope.chooseMovie = function() {
+        $scope.movie.ratings.imdb_rating = '';
+        $scope.movie.ratings.tomato_rating = '';
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
         $scope.bodyBackground = {'background-image' : 'url(' + $scope.movie.images.fanart + ')'};
         $scope.setRatings();
@@ -84,10 +86,7 @@ function mainController($scope, $http) {
         if(typeof $scope.movie.ratings == 'undefined') {
             $scope.movie.ratings = {};
         }
-        if(typeof $scope.movie.ratings.imdb_rating == 'undefined' || $scope.movie.ratings.imdb_rating == '' || typeof $scope.movie.ratings.tomato_rating == 'undefined' || $scope.movie.ratings.tomato_rating != '') {
-            $scope.movie.ratings.imdb_rating = '';
-            $scope.movie.ratings.tomato_rating = '';
-
+        if(typeof $scope.movie.ratings.imdb_rating == 'undefined' || $scope.movie.ratings.imdb_rating == '' || typeof $scope.movie.ratings.tomato_rating == 'undefined' || $scope.movie.ratings.tomato_rating == '') {
             $http.jsonp(url)
                 .success(function(ratings) {
                     $scope.movie.ratings.imdb_rating = ratings.imdbRating;
