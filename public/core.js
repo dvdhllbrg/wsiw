@@ -86,14 +86,16 @@ function mainController($scope, $http) {
         if(typeof $scope.movie.ratings == 'undefined') {
             $scope.movie.ratings = {};
         }
+        if(typeof $scope.movie.ratings.imdb_rating != 'undefined' && $scope.movie.ratings.imdb_rating != '' && typeof $scope.movie.ratings.tomato_rating != 'undefined' && $scope.movie.ratings.tomato_rating != '') {
 
-        $http.jsonp(url)
-            .success(function(ratings) {
-                $scope.movie.ratings.imdb_rating = ratings.imdbRating;
-                $scope.movie.ratings.tomato_rating = ratings.tomatoRating;
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
+            $http.jsonp(url)
+                .success(function(ratings) {
+                    $scope.movie.ratings.imdb_rating = ratings.imdbRating;
+                    $scope.movie.ratings.tomato_rating = ratings.tomatoRating;
+                })
+                .error(function(data) {
+                    console.log('Error: ' + data);
+                });
+        }
     }
 }
