@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="wsiw">
+<html data-ng-app="wsiw">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
@@ -21,23 +21,23 @@
           ga('send', 'pageview');
         </script>
     </head>
-    <body ng-controller="mainController" ng-style="bodyBackground">
-        <div id="overlay" ng-show="showOverlay"></div>
-        <img src="images/loading.gif" ng-show="showLoading" id="loading_image" alt="Loading">
+    <body data-ng-controller="mainController" data-ng-style="bodyBackground">
+        <div id="overlay" data-ng-show="showOverlay"></div>
+        <img src="images/loading.gif" data-ng-show="showLoading" id="loading_image" alt="Loading">
         <div class="content">
-            <button id="wsiw_button" ng-click="getMovies()" ng-hide="movie">WHAT SHOULD I WATCH?</button>
-            <div id="info_container" ng-show="movie">
+            <button id="wsiw_button" data-ng-click="getMovies()" data-ng-hide="movie">WHAT SHOULD I WATCH?</button>
+            <div id="info_container" data-ng-show="movie">
                 <div id="info_container_left">
-                    <img id="poster" ng-src="{{ movie.images.poster }}" alt="Movie poster">
+                    <img id="poster" data-ng-src="{{ movie.images.poster }}" alt="Movie poster">
                 </div>
                 <div id="info_container_right">
                     <div id="summary">
                         <span id="year">{{ movie.year }}</span> |
                         <span id="runtime">{{ movie.runtime }}</span> |
-                        <span id="genres"><span class="genre" ng-repeat="genre in movie.genres">{{ genre }} </span></span> 
+                        <span id="genres"><span class="genre" data-ng-repeat="genre in movie.genres">{{ genre }} </span></span> 
                         <div id="summary_right">
-                            <img class="ratings_icon" src="images/imdb.png" alt="imdb" ng-show="movie.ratings.imdb_rating">&nbsp;<span id="imdb_rating">{{ movie.ratings.imdb_rating }}</span>&nbsp;
-                            <img class="ratings_icon" src="images/rt.png" alt="rotten tomatoes" ng-show="movie.ratings.tomato_rating">&nbsp;<span id="rt_rating">{{ movie.ratings.tomato_rating }}</span>    
+                            <img class="ratings_icon" src="images/imdb.png" alt="imdb" data-ng-show="movie.ratings.imdb_rating">&nbsp;<span id="imdb_rating">{{ movie.ratings.imdb_rating }}</span>&nbsp;
+                            <img class="ratings_icon" src="images/rt.png" alt="rotten tomatoes" data-ng-show="movie.ratings.tomato_rating">&nbsp;<span id="rt_rating">{{ movie.ratings.tomato_rating }}</span>    
                         </div>
                         <span class="clearfix"></span>
                     </div>
@@ -46,9 +46,9 @@
                 </div>
             </div>
         </div>
-        <a id="what_is_this" ng-hide="movie" href="#" ng-click="showAbout = true; showOverlay = true">What is this?</a>
-        <div id="about" class="popup" ng-show="showAbout">
-            <img src="images/x.svg" class="close_button" alt="Close popup" ng-click="showAbout = false; showOverlay = false">
+        <a id="what_is_this" data-ng-hide="movie" href="#" data-ng-click="showAbout = true; showOverlay = true">What is this?</a>
+        <div id="about" class="popup" data-ng-show="showAbout">
+            <img src="images/x.svg" class="close_button" alt="Close popup" data-ng-click="showAbout = false; showOverlay = false">
             <p>This site intends to help you find a movie to watch!</p>
             <p>To begin with, select a source at the bottom. There are three alternatives:</p>
             <dl>
@@ -66,18 +66,18 @@
             <p>This site is powered by <a href="http://trakt.tv" target="_blank">trakt.tv</a> and the <a target="_blank" href="http://omdbapi.com">OMDb API</a>.
             It was made by <a href="http://da.vidhallberg.se" target="_blank">David Hallberg Jönsson</a> and is fully available on <a href="http://github.com/iamhj/wsiw" target="_blank">GitHub</a>.</p>
         </div>
-        <p id="not_happy" ng-show="movie">Not happy? <a href="#" id="another" ng-click="chooseMovie()">Pick a new one</a> or <a href="#" id="new_source" ng-click="sourceSelectorPopup = true; showOverlay = true;">choose another source</a>.</p>
-        <div id="source_selector" ng-show="sourceSelectorPopup || !movie" ng-class="{source_selector_popup : sourceSelectorPopup}">
-            <img src="images/x.svg" class="close_button" alt="Close popup" ng-show="sourceSelectorPopup" ng-click="sourceSelectorPopup = false; showOverlay = false">
-            <p class="source_error" ng-show="sourceError">We couldn't find that list! Perhaps the user doesn't exist, or is private.</p>
+        <p id="not_happy" data-ng-show="movie">Not happy? <a href="#" id="another" data-ng-click="chooseMovie()">Pick a new one</a> or <a href="#" id="new_source" data-ng-click="sourceSelectorPopup = true; showOverlay = true;">choose another source</a>.</p>
+        <div id="source_selector" data-ng-show="sourceSelectorPopup || !movie" data-ng-class="{source_selector_popup : sourceSelectorPopup}">
+            <img src="images/x.svg" class="close_button" alt="Close popup" data-ng-show="sourceSelectorPopup" data-ng-click="sourceSelectorPopup = false; showOverlay = false">
+            <p class="source_error" data-ng-show="sourceError">We couldn't find that list! Perhaps the user doesn't exist, or is private.</p>
             <span class="sources_label">Source:</span>
             <ul id="sources">
-                <li class="source"><input type="radio" id="s_trending" value="trending" name="source" ng-checked="true" ng-model="source"><label for="s_trending">Trending</label></li>
-                <li class="source"><input type="radio" id="s_watchlist" value="watchlist" name="source" ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj" ng-model="wl_user"><label for="s_watchlist">'s watchlist</label></li>
-                <li class="source"><input type="radio" id="s_collection" value="collection" name="source" ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj" ng-model="c_user"><label for="s_collection">'s collection </label></li>
-                <li class="source"><input type="radio" id="s_top250" value="top250" name="source" ng-model="source"><label for="s_top250">IMDb top 250 </label></li>
+                <li class="source"><input type="radio" id="s_trending" value="trending" name="source" data-ng-checked="true" data-ng-model="source"><label for="s_trending">Trending</label></li>
+                <li class="source"><input type="radio" id="s_watchlist" value="watchlist" name="source" data-ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj" data-ng-model="wl_user"><label for="s_watchlist">'s watchlist</label></li>
+                <li class="source"><input type="radio" id="s_collection" value="collection" name="source" data-ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj" data-ng-model="c_user"><label for="s_collection">'s collection </label></li>
+                <li class="source"><input type="radio" id="s_top250" value="top250" name="source" data-ng-model="source"><label for="s_top250">IMDb top 250 </label></li>
             </ul>
-            <button id="select_source_button" ng-show="sourceSelectorPopup" ng-click="getMovies()">Select source</button>
+            <button id="select_source_button" data-ng-show="sourceSelectorPopup" data-ng-click="getMovies()">Select source</button>
         </div>
     </body>
 </html>
