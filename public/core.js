@@ -8,7 +8,7 @@ function mainController($scope, $http) {
         'method' : '',
         'user' : '',
         'extra' : ''
-    }
+    };
     $scope.movies = [];
     $scope.movie = null;
     $scope.sourceError = false;
@@ -55,10 +55,10 @@ function mainController($scope, $http) {
                     break;
             }
 
-            $scope.traktParams.user = (typeof $scope.traktParams.user === 'undefined' || $scope.traktParams.user == '') ? 'iamhj' : $scope.traktParams.user;
-            var url = $scope.traktParams.baseUrl + '/' + $scope.traktParams.method + '/' + $scope.traktParams.apikey + '/' + $scope.traktParams.user + $scope.traktParams.extra + '?callback=JSON_CALLBACK';
+            $scope.traktParams.user = (typeof $scope.traktParams.user === 'undefined' || $scope.traktParams.user === '') ? 'iamhj' : $scope.traktParams.user;
+            var traktUrl = $scope.traktParams.baseUrl + '/' + $scope.traktParams.method + '/' + $scope.traktParams.apikey + '/' + $scope.traktParams.user + $scope.traktParams.extra + '?callback=JSON_CALLBACK';
 
-            $http.jsonp(url)
+            $http.jsonp(traktUrl)
                 .success(function(movies) {
                     $scope.movies = movies;
                     $scope.chooseMovie();
@@ -78,21 +78,21 @@ function mainController($scope, $http) {
         $scope.setRatings();
         $scope.showLoading = false;
         $scope.showOverlay = false;
-    }
+    };
 
     $scope.shrinkPoster = function() {
         var shrunkPoster = $scope.movie.images.poster;
         shrunkPoster = shrunkPoster.substring(0, shrunkPoster.indexOf('.jpg'));
         shrunkPoster = shrunkPoster + '-300' + '.jpg';
         $scope.movie.images.poster = shrunkPoster;
-    }
+    };
 
     $scope.setRatings = function() {
         var url = 'http://www.omdbapi.com/?i=' + $scope.movie.imdb_id + '&tomatoes=true&callback=JSON_CALLBACK';
         if(typeof $scope.movie.ratings == 'undefined') {
             $scope.movie.ratings = {};
         }
-        if(typeof $scope.movie.ratings.imdb_rating == 'undefined' || $scope.movie.ratings.imdb_rating == '' || typeof $scope.movie.ratings.tomato_rating == 'undefined' || $scope.movie.ratings.tomato_rating == '') {
+        if(typeof $scope.movie.ratings.imdb_rating === 'undefined' || $scope.movie.ratings.imdb_rating === '' || typeof $scope.movie.ratings.tomato_rating === 'undefined' || $scope.movie.ratings.tomato_rating === '') {
             $http.jsonp(url)
                 .success(function(ratings) {
                     $scope.movie.ratings.imdb_rating = ratings.imdbRating;
@@ -102,5 +102,6 @@ function mainController($scope, $http) {
                     console.log('Error: ' + data);
                 });
         }
-    }
+    };
 }
+
