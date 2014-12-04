@@ -1,6 +1,4 @@
-var wsiw = angular.module('wsiw', []);
-
-function mainController($scope, $http) {
+function MainController($scope, $http) {
     $scope.source = 'trending';
     $scope.traktParams = {
         'baseUrl' : 'http://api.trakt.tv',
@@ -105,3 +103,4 @@ function mainController($scope, $http) {
     };
 }
 
+angular.module('wsiw', []).controller('MainController', ['$scope', '$http', MainController]);
