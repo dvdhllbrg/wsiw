@@ -73,10 +73,18 @@ function mainController($scope, $http) {
 
     $scope.chooseMovie = function() {
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
+        $scope.shrinkPoster();
         $scope.bodyBackground = {'background-image' : 'url(' + $scope.movie.images.fanart + ')'};
         $scope.setRatings();
         $scope.showLoading = false;
         $scope.showOverlay = false;
+    }
+
+    $scope.shrinkPoster = function() {
+        var shrunkPoster = $scope.movie.images.poster;
+        shrunkPoster = shrunkPoster.substring(0, shrunkPoster.indexOf('.jpg'));
+        shrunkPoster = shrunkPoster + '-300' + '.jpg';
+        $scope.movie.images.poster = shrunkPoster;
     }
 
     $scope.setRatings = function() {
