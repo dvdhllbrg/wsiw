@@ -22,8 +22,8 @@ function MainController($scope, $http) {
         $scope.showLoading = true;
         $scope.sourceSelectorPopup = false;
 
-        if($scope.source == 'top250') {
-            var url = 'http://whatshouldiwat.ch/api/movies';
+        if($scope.source == 'top250' || $scope.source == 'rt') {
+            var url = 'http://whatshouldiwat.ch/api/movies' + $scope.source;
             $http.get(url)
                 .success(function(movies) {
                     for(var i=0; i<movies.length; i++) {

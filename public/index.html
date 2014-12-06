@@ -60,7 +60,8 @@
                 <dd>The selected user's collection. Only works if it is not private. This may take a long time if the collection is big.</dd>
                 <dt>IMDb top 250</dt>
                 <dd>The IMDb top 250 list.</dd>
-
+                <dt>Rotten Tomatoes top 100</dt>
+                <dd>The top 100 movies of all time according to Rotten Tomatoes.</dd>
             </dl>
             <p>After you have selected a source, simply press the big button and you will be presented with a movie. Simple!</p>
             <p>This site is powered by <a href="http://trakt.tv" target="_blank">trakt.tv</a> and the <a target="_blank" href="http://omdbapi.com">OMDb API</a>.
@@ -76,6 +77,7 @@
                 <li class="source"><input type="radio" id="s_watchlist" value="watchlist" name="source" data-ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj" data-ng-model="wl_user"><label for="s_watchlist">'s watchlist</label></li>
                 <li class="source"><input type="radio" id="s_collection" value="collection" name="source" data-ng-model="source"><input type="text" class="trakt_user" placeholder="iamhj" data-ng-model="c_user"><label for="s_collection">'s collection </label></li>
                 <li class="source"><input type="radio" id="s_top250" value="top250" name="source" data-ng-model="source"><label for="s_top250">IMDb top 250 </label></li>
+                <li class="source"><input type="radio" id="s_rt" value="rt" name="source" data-ng-model="source"><label for="s_rt">Rotten Tomatoes top 100 </label></li>
             </ul>
             <button id="select_source_button" data-ng-show="sourceSelectorPopup" data-ng-click="getMovies()">Select source</button>
         </div>
