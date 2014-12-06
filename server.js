@@ -27,6 +27,8 @@ app.get('/api/movies/:source', function(req, res) {
         }
         res.json(movies);
     });
+
+    delete Movie;
 });
 
 // Application
