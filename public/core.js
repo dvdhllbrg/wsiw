@@ -23,7 +23,7 @@ function MainController($scope, $http) {
         $scope.sourceSelectorPopup = false;
 
         if($scope.source == 'top250' || $scope.source == 'rt') {
-            var url = 'http://whatshouldiwat.ch/api/movies' + $scope.source;
+            var url = 'http://whatshouldiwat.ch/api/movies/' + $scope.source;
             $http.get(url)
                 .success(function(movies) {
                     for(var i=0; i<movies.length; i++) {
