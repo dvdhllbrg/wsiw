@@ -82,8 +82,10 @@ function MainController($scope, $http) {
     $scope.shrinkPoster = function() {
         var shrunkPoster = $scope.movie.images.poster;
         shrunkPoster = shrunkPoster.substring(0, shrunkPoster.indexOf('.jpg'));
-        shrunkPoster = shrunkPoster + '-300' + '.jpg';
-        $scope.movie.images.poster = shrunkPoster;
+        if(shrunkPoster.substring(shrunkPoster.length - 4) != '-300') {
+            shrunkPoster = shrunkPoster + '-300' + '.jpg';
+            $scope.movie.images.poster = shrunkPoster;
+        }
     };
 
     $scope.setRatings = function() {
