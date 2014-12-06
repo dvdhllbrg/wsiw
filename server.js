@@ -12,7 +12,7 @@ app.use(compress());
 var movieSchema = mongoose.Schema( {
         movie: Object
     }, {
-        collection : req.params.source
+        collection : 'top250'
     });
 
 var Movie = mongoose.model('Movie', movieSchema);
