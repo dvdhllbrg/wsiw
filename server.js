@@ -9,22 +9,21 @@ mongoose.connect('mongodb://localhost/wsiw');
 app.use(express.static(__dirname + '/public'));
 app.use(compress());
 
-
-
-
-// Routes
-app.get('/api/movies/:source', function(req, res) {
-    var movieSchema = mongoose.Schema( {
+var movieSchema = mongoose.Schema( {
         movie: Object
     }, {
         collection : req.params.source
     });
 
-    var Movie = mongoose.model('Movie', movieSchema);
+var Movie = mongoose.model('Movie', movieSchema);
+
+// Routes
+app.get('/api/movies/:source', function(req, res) {
+    movieSchema.set('collection', req.params.source);
     Movie.find(function(err, movies) {
-        if(err) {
-            res.send(err);
-        }
+            if(err) {
+                res.send(err);
+            }
         res.json(movies);
     });
 
