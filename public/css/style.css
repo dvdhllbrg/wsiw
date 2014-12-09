@@ -281,8 +281,12 @@ button:hover {
     }
 
     .source {
-        margin-bottom: 2%;
         font-size: 1.2em;
+        line-height: 1.2;
+    }
+
+    #wsiw_button {
+        font-size: 2.4em;
     }
 
     #not_happy, #what_is_this {
