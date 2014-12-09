@@ -280,6 +280,10 @@ button:hover {
         text-align: initial;
     }
 
+    .source_selector_popup {
+        width: 100%;
+    }
+
     .source {
         font-size: 1.2em;
         line-height: 1.2;
@@ -291,5 +295,8 @@ button:hover {
 
     #not_happy, #what_is_this {
         font-size: 2em;
+        line-height: 1.2;
+        top: 0;
+        right: 0;
     }
 }
