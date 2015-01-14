@@ -50,7 +50,7 @@ app.get('/api/movies/:source', function(req, res) {
                 'trakt-api-version': '2',
                 'trakt-api-key': '95599fc3afe66f9e0821cafb79f86be7b491aee3d7fc9c6f13a642e7360dc540'
             }}, function(err, response, movies) {
-                if(error) {
+                if(err) {
                     res.send(err);
                 }
                 res.json(movies);
