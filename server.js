@@ -54,8 +54,7 @@ app.get('/api/movies/:source', function(req, res) {
                     res.send(err);
                 }
                 res.json(movies);
-            }
-        })
+        });
     }
 });
 
