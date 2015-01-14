@@ -26,7 +26,7 @@ var rtMovie = mongoose.model('rtMovie', rtSchema);
 
 
 // Routes
-app.get('/api/movies/:source/:method/:user', function(req, res) {
+app.get('/api/movies/:source/:method/:user?', function(req, res) {
     if(req.params.source == 'local') {
         if(req.params.method == 'top250') {
             imdbMovie.find(function(err, movies) {
@@ -44,14 +44,17 @@ app.get('/api/movies/:source/:method/:user', function(req, res) {
             });
         }
     } else if(req.params.source == 'trakt') {
-        var url = '';
-        if(req.params.method = 'trending') {
-            url = 'https://api.trakt.tv/movies/trending?extended=full,images'
+        var url = 'https://api.trakt.tv/';
+        if(req.params.method == 'trending') {
+            url = 'movies/trending';
         } else if(req.params.method == 'watchlist') {
-            url = 'https://users/' + req.params.user + '/watchlist/movies';
+            url = 'users/' + req.params.user + '/watchlist/movies';
         } else if(req.params.method == 'collection') {
-            url = 'https://users/' + req.params.user + '/collection/movies';
+            url = 'users/' + req.params.user + '/collection/movies';
         }
+
+        url += '?extended=full,images';
+
         request({
             method: 'GET',
             url: url,
@@ -59,7 +62,7 @@ app.get('/api/movies/:source/:method/:user', function(req, res) {
                 'Content-Type': 'application/json',
                 'trakt-api-version': '2',
                 'trakt-api-key': '95599fc3afe66f9e0821cafb79f86be7b491aee3d7fc9c6f13a642e7360dc540'
-            }}, function(err, response, movies) {
+            }}, function(err, res, movies) {
                 if(err) {
                     res.send(err);
                 }
