@@ -21,7 +21,7 @@ function MainController($scope, $http) {
         var url = 'http://whatshouldiwat.ch/api/movies/';
 
         if($scope.source == 'top250' || $scope.source == 'rt') {
-            url += 'local/' + $scope.source;
+            url = url + 'local/' + $scope.source;
             $http.get(url)
                 .success(function(movies) {
                     for(var i=0; i<movies.length; i++) {
@@ -38,13 +38,13 @@ function MainController($scope, $http) {
         else {
             switch ($scope.source) {
                 case 'watchlist':
-                    url += 'users/' + $scope.wl_user + '/watchlist/movies';
+                    url = url + 'users/' + $scope.wl_user + '/watchlist/movies';
                     break;
                 case 'collection':
-                    url += 'users/' + $scope.c_user + '/collection/movies';
+                    url = url + 'users/' + $scope.c_user + '/collection/movies';
                     break;
                 case 'trending':
-                    url += 'movies/trending';
+                    url = url + 'movies/trending';
                     break;
             }
 
