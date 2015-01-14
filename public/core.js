@@ -1,10 +1,5 @@
 function MainController($scope, $http) {
     $scope.source = 'trending';
-    $scope.traktParams = {
-        'baseUrl' : 'https://api.trakt.tv/',
-        'apikey' : '',
-        'method' : '',
-    };
     $scope.wl_user = 'iamhj';
     $scope.c_user = 'iamhj;'
     $scope.movies = [];
@@ -22,9 +17,10 @@ function MainController($scope, $http) {
         $scope.showLoading = true;
         $scope.sourceSelectorPopup = false;
 
-        if($scope.source == 'top250' || $scope.source == 'rt' || $scope.source == 'trending') {
-            $scope.movies = [];
-            var url = 'http://whatshouldiwat.ch/api/movies/' + $scope.source;
+        $scope.movies = [];
+        var url = 'http://whatshouldiwat.ch/api/movies/';
+        if($scope.source == 'top250' || $scope.source == 'rt') {
+            url = += 'local/' + $scope.source;
             $http.get(url)
                 .success(function(movies) {
                     for(var i=0; i<movies.length; i++) {
@@ -41,31 +37,17 @@ function MainController($scope, $http) {
         else {
             switch ($scope.source) {
                 case 'watchlist':
-                    $scope.traktParams.method = 'users/' + $scope.wl_user + '/watchlist/movies';
+                    url += 'users/' + $scope.wl_user + '/watchlist/movies';
                     break;
                 case 'collection':
-                    $scope.traktParams.method = 'users/' + $scope.c_user + '/collection/movies';
+                    url += 'users/' + $scope.c_user + '/collection/movies';
                     break;
-                //case 'trending':
-                    //$scope.traktParams.method = 'movies/trending';
-                    //break;
+                case 'trending':
+                    url += 'movies/trending';
+                    break;
             }
 
-            var traktUrl = $scope.traktParams.baseUrl + $scope.traktParams.method + '?extended=full,images';
-
-            var req = {
-                method: 'GET',
-                url: traktUrl,
-                headers: {
-                    'Content-Type': 'application/json',
-                    'trakt-api-version': '2',
-                    'trakt-api-key': $scope.traktParams.apikey
-                },
-                withCredentials: true,
-                responseType: 'json'
-            }
-
-            $http(req)
+            $http.get(url)
                 .success(function(movies) {
                     $scope.movies = movies;
                     $scope.chooseMovie();
@@ -75,7 +57,7 @@ function MainController($scope, $http) {
                     $scope.showOverlay = false;
                     $scope.sourceError = true;
                 });
-        }
+
     };
 
     $scope.chooseMovie = function() {

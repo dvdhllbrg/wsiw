@@ -26,25 +26,35 @@ var rtMovie = mongoose.model('rtMovie', rtSchema);
 
 
 // Routes
-app.get('/api/movies/:source', function(req, res) {
-    if(req.params.source == 'top250') {
-        imdbMovie.find(function(err, movies) {
-            if(err) {
-                res.send(err);
-            }
-            res.json(movies);
-        });
-    } else if(req.params.source == 'rt') {
-        rtMovie.find(function(err, movies) {
-            if(err) {
-                res.send(err);
-            }
-            res.json(movies);
-        });
-    } else if(req.params.source == 'trending') {
+app.get('/api/movies/:source/:method/:user', function(req, res) {
+    if(req.params.source == 'local') {
+        if(req.params.method == 'top250') {
+            imdbMovie.find(function(err, movies) {
+                if(err) {
+                    res.send(err);
+                }
+                res.json(movies);
+            });
+        } else if(req.params.method == 'rt') {
+            rtMovie.find(function(err, movies) {
+                if(err) {
+                    res.send(err);
+                }
+                res.json(movies);
+            });
+        }
+    } else if(req.params.source == 'trakt') {
+        var url = '';
+        if(req.params.method = 'trending') {
+            url = 'https://api.trakt.tv/movies/trending?extended=full,images'
+        } else if(req.params.method == 'watchlist') {
+            url = 'https://users/' + req.params.user + '/watchlist/movies';
+        } else if(req.params.method == 'collection') {
+            url = 'https://users/' + req.params.user + '/collection/movies';
+        }
         request({
             method: 'GET',
-            url: 'https://api.trakt.tv/movies/trending?extended=full,images',
+            url: url,
             headers: {
                 'Content-Type': 'application/json',
                 'trakt-api-version': '2',
