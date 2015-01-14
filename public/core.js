@@ -19,8 +19,9 @@ function MainController($scope, $http) {
 
         $scope.movies = [];
         var url = 'http://whatshouldiwat.ch/api/movies/';
+
         if($scope.source == 'top250' || $scope.source == 'rt') {
-            url = += 'local/' + $scope.source;
+            url += 'local/' + $scope.source;
             $http.get(url)
                 .success(function(movies) {
                     for(var i=0; i<movies.length; i++) {
