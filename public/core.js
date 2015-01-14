@@ -38,18 +38,18 @@ function MainController($scope, $http) {
             }
         }
 
-            $http.get(url)
-                .success(function(movies) {
-                    for(var i=0; i<movies.length; i++) {
-                        $scope.movies[i] = movies[i].movie;
-                    }
-                    $scope.chooseMovie();
-                })
-                .error(function(data) {
-                    $scope.showLoading = false;
-                    $scope.showOverlay = false;
-                    $scope.sourceError = true;
-                });
+        $http.get(url)
+            .success(function(movies) {
+                for(var i=0; i<movies.length; i++) {
+                    $scope.movies[i] = movies[i].movie;
+                }
+                $scope.chooseMovie();
+            })
+            .error(function(data) {
+                $scope.showLoading = false;
+                $scope.showOverlay = false;
+                $scope.sourceError = true;
+            });
     };
 
     $scope.chooseMovie = function() {
