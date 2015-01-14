@@ -5,6 +5,8 @@ function MainController($scope, $http) {
         'apikey' : '95599fc3afe66f9e0821cafb79f86be7b491aee3d7fc9c6f13a642e7360dc540',
         'method' : '',
     };
+    $scope.wl_user = 'iamhj';
+    $scope.c_user = 'iamhj;'
     $scope.movies = [];
     $scope.movie = null;
     $scope.sourceError = false;
@@ -52,7 +54,7 @@ function MainController($scope, $http) {
             var traktUrl = $scope.traktParams.baseUrl + $scope.traktParams.method;
 
             var req = {
-                method: 'POST',
+                method: 'GET',
                 url: traktUrl,
                 headers: {
                     'Content-Type': 'application/json',
