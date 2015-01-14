@@ -61,7 +61,7 @@ function MainController($scope, $http) {
                     'trakt-api-version': '2',
                     'trakt-api-key': $scope.traktParams.apikey
                 },
-                withCredentials: true
+                withCredentials: true,
                 responseType: 'json'
             }
 
