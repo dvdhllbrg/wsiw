@@ -44,7 +44,7 @@ app.get('/api/movies/:source', function(req, res) {
     } else if(req.params.source == 'trending') {
         request({
             method: 'GET',
-            url: 'https://api.trakt.tv/movies/trending',
+            url: 'https://api.trakt.tv/movies/trending?extended=full,images',
             headers: {
                 'Content-Type': 'application/json',
                 'trakt-api-version': '2',
