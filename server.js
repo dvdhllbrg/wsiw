@@ -58,6 +58,7 @@ app.get('/api/movies/:source/:method/:user?', function(req, res) {
         request({
             method: 'GET',
             url: url,
+            json: true,
             headers: {
                 'Content-Type': 'application/json',
                 'trakt-api-version': '2',

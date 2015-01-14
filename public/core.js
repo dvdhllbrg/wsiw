@@ -22,18 +22,6 @@ function MainController($scope, $http) {
 
         if($scope.source == 'top250' || $scope.source == 'rt') {
             url = url + 'local/' + $scope.source;
-            $http.get(url)
-                .success(function(movies) {
-                    for(var i=0; i<movies.length; i++) {
-                        $scope.movies[i] = movies[i].movie;
-                    }
-                    $scope.chooseMovie();
-                })
-                .error(function(data) {
-                    $scope.showLoading = false;
-                    $scope.showOverlay = false;
-                    $scope.sourceError = true;
-                });
         }
         else {
             url += 'trakt/';
@@ -48,10 +36,13 @@ function MainController($scope, $http) {
                     url = url + 'trending';
                     break;
             }
+        }
 
             $http.get(url)
                 .success(function(movies) {
-                    $scope.movies = movies;
+                    for(var i=0; i<movies.length; i++) {
+                        $scope.movies[i] = movies[i].movie;
+                    }
                     $scope.chooseMovie();
                 })
                 .error(function(data) {
@@ -59,26 +50,15 @@ function MainController($scope, $http) {
                     $scope.showOverlay = false;
                     $scope.sourceError = true;
                 });
-            }
-
     };
 
     $scope.chooseMovie = function() {
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
         $scope.shrinkPoster();
-        $scope.bodyBackground = {'background-image' : 'url(' + $scope.movie.images.fanart + ')'};
+        $scope.bodyBackground = {'background-image' : 'url(' + $scope.movie.images.fanart.full + ')'};
         $scope.setRatings();
         $scope.showLoading = false;
         $scope.showOverlay = false;
-    };
-
-    $scope.shrinkPoster = function() {
-        var shrunkPoster = $scope.movie.images.poster;
-        shrunkPoster = shrunkPoster.substring(0, shrunkPoster.indexOf('.jpg'));
-        if(shrunkPoster.substring(shrunkPoster.length - 4) != '-300') {
-            shrunkPoster = shrunkPoster + '-300' + '.jpg';
-            $scope.movie.images.poster = shrunkPoster;
-        }
     };
 
     $scope.setRatings = function() {

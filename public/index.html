@@ -29,7 +29,7 @@
             <button id="wsiw_button" data-ng-click="getMovies()" data-ng-hide="movie">WHAT SHOULD I WATCH?</button>
             <div id="info_container" data-ng-show="movie">
                 <div id="info_container_left">
-                    <img id="poster" data-ng-src="{{ movie.images.poster }}" src="images/loading.gif" alt="Movie poster">
+                    <img id="poster" data-ng-src="{{ movie.images.poster.thumb }}" src="images/loading.gif" alt="Movie poster">
                 </div>
                 <div id="info_container_right">
                     <div id="summary">
