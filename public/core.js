@@ -54,7 +54,6 @@ function MainController($scope, $http) {
 
     $scope.chooseMovie = function() {
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
-        $scope.shrinkPoster();
         $scope.bodyBackground = {'background-image' : 'url(' + $scope.movie.images.fanart.full + ')'};
         $scope.setRatings();
         $scope.showLoading = false;
