@@ -51,20 +51,17 @@ function MainController($scope, $http) {
                     break;
             }
 
-            var traktUrl = $scope.traktParams.baseUrl + $scope.traktParams.method;
+            var traktUrl = $scope.traktParams.baseUrl + $scope.traktParams.method + '?extended=full,images';
 
             var req = {
-                method: 'GET',
-                url: traktUrl,
                 headers: {
                     'Content-Type': 'application/json',
                     'trakt-api-version': '2',
                     'trakt-api-key': $scope.traktParams.apikey
-                },
-                responseType: 'json'
+                }
             }
 
-            $http(req)
+            $http.jsonp(traktURL,req)
                 .success(function(movies) {
                     $scope.movies = movies;
                     $scope.chooseMovie();
