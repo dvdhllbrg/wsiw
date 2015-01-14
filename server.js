@@ -46,11 +46,11 @@ app.get('/api/movies/:source/:method/:user?', function(req, res) {
     } else if(req.params.source == 'trakt') {
         var url = 'https://api.trakt.tv/';
         if(req.params.method == 'trending') {
-            url = 'movies/trending';
+            url += 'movies/trending';
         } else if(req.params.method == 'watchlist') {
-            url = 'users/' + req.params.user + '/watchlist/movies';
+            url += 'users/' + req.params.user + '/watchlist/movies';
         } else if(req.params.method == 'collection') {
-            url = 'users/' + req.params.user + '/collection/movies';
+            url += 'users/' + req.params.user + '/collection/movies';
         }
 
         url += '?extended=full,images';
@@ -62,7 +62,7 @@ app.get('/api/movies/:source/:method/:user?', function(req, res) {
                 'Content-Type': 'application/json',
                 'trakt-api-version': '2',
                 'trakt-api-key': '95599fc3afe66f9e0821cafb79f86be7b491aee3d7fc9c6f13a642e7360dc540'
-            }}, function(err, res, movies) {
+            }}, function(err, response, movies) {
                 if(err) {
                     res.send(err);
                 }
