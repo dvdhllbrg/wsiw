@@ -1,4 +1,5 @@
 var express = require('express');
+var request = require('request');
 var app = express();
 
 var mongoose = require('mongoose');
@@ -40,6 +41,21 @@ app.get('/api/movies/:source', function(req, res) {
             }
             res.json(movies);
         });
+    } else if(req.params.source == 'trending') {
+        request({
+            method: 'GET',
+            url: 'https://api.trakt.tv/movies/trending',
+            headers: {
+                'Content-Type': 'application/json',
+                'trakt-api-version': '2',
+                'trakt-api-key': '95599fc3afe66f9e0821cafb79f86be7b491aee3d7fc9c6f13a642e7360dc540'
+            }}, function(err, response, movies) {
+                if(error) {
+                    res.send(err);
+                }
+                res.json(movies);
+            }
+        })
     }
 });
 

@@ -2,7 +2,7 @@ function MainController($scope, $http) {
     $scope.source = 'trending';
     $scope.traktParams = {
         'baseUrl' : 'https://api.trakt.tv/',
-        'apikey' : '95599fc3afe66f9e0821cafb79f86be7b491aee3d7fc9c6f13a642e7360dc540',
+        'apikey' : '',
         'method' : '',
     };
     $scope.wl_user = 'iamhj';
@@ -22,7 +22,7 @@ function MainController($scope, $http) {
         $scope.showLoading = true;
         $scope.sourceSelectorPopup = false;
 
-        if($scope.source == 'top250' || $scope.source == 'rt') {
+        if($scope.source == 'top250' || $scope.source == 'rt' || $scope.source == 'trending') {
             $scope.movies = [];
             var url = 'http://whatshouldiwat.ch/api/movies/' + $scope.source;
             $http.get(url)
@@ -46,9 +46,9 @@ function MainController($scope, $http) {
                 case 'collection':
                     $scope.traktParams.method = 'users/' + $scope.c_user + '/collection/movies';
                     break;
-                case 'trending':
-                    $scope.traktParams.method = 'movies/trending';
-                    break;
+                //case 'trending':
+                    //$scope.traktParams.method = 'movies/trending';
+                    //break;
             }
 
             var traktUrl = $scope.traktParams.baseUrl + $scope.traktParams.method + '?extended=full,images';
