@@ -36,15 +36,16 @@ function MainController($scope, $http) {
                 });
         }
         else {
+            url += 'trakt/';
             switch ($scope.source) {
                 case 'watchlist':
-                    url = url + 'users/' + $scope.wl_user + '/watchlist/movies';
+                    url = url + 'watchlist/' + $scope.wl_user;
                     break;
                 case 'collection':
-                    url = url + 'users/' + $scope.c_user + '/collection/movies';
+                    url = url + 'collection/' + $scope.c_user;
                     break;
                 case 'trending':
-                    url = url + 'movies/trending';
+                    url = url + 'trending';
                     break;
             }
 
