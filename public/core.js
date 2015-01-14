@@ -1,7 +1,7 @@
 function MainController($scope, $http) {
     $scope.source = 'trending';
     $scope.wl_user = 'iamhj';
-    $scope.c_user = 'iamhj;'
+    $scope.c_user = 'iamhj';
     $scope.movies = [];
     $scope.movie = null;
     $scope.sourceError = false;
@@ -58,6 +58,7 @@ function MainController($scope, $http) {
                     $scope.showOverlay = false;
                     $scope.sourceError = true;
                 });
+            }
 
     };
 
