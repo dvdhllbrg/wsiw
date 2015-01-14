@@ -61,7 +61,7 @@ function MainController($scope, $http) {
                 }
             }
 
-            $http.jsonp(traktURL,req)
+            $http.jsonp(traktUrl,req)
                 .success(function(movies) {
                     $scope.movies = movies;
                     $scope.chooseMovie();
