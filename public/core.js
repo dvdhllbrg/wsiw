@@ -1,11 +1,9 @@
 function MainController($scope, $http) {
     $scope.source = 'trending';
     $scope.traktParams = {
-        'baseUrl' : 'http://api.trakt.tv',
-        'apikey' : 'eca8a8e86968052661e1027d3eaeb444',
+        'baseUrl' : 'https://api.trakt.tv/',
+        'apikey' : '95599fc3afe66f9e0821cafb79f86be7b491aee3d7fc9c6f13a642e7360dc540',
         'method' : '',
-        'user' : '',
-        'extra' : ''
     };
     $scope.movies = [];
     $scope.movie = null;
@@ -41,23 +39,30 @@ function MainController($scope, $http) {
         else {
             switch ($scope.source) {
                 case 'watchlist':
-                    $scope.traktParams.method = 'user/watchlist/movies.json';
-                    $scope.traktParams.user = $scope.wl_user;
+                    $scope.traktParams.method = 'users/' + $scope.wl_user + '/watchlist/movies';
                     break;
                 case 'collection':
-                    $scope.traktParams.method = 'user/library/movies/collection.json';
-                    $scope.traktParams.user = $scope.c_user;
-                    $scope.traktParams.extra = '/extended';
+                    $scope.traktParams.method = 'users/' + $scope.c_user + '/collection/movies';
                     break;
                 case 'trending':
-                    $scope.traktParams.method = 'movies/trending.json';
+                    $scope.traktParams.method = 'movies/trending';
                     break;
             }
 
-            $scope.traktParams.user = (typeof $scope.traktParams.user === 'undefined' || $scope.traktParams.user === '') ? 'iamhj' : $scope.traktParams.user;
-            var traktUrl = $scope.traktParams.baseUrl + '/' + $scope.traktParams.method + '/' + $scope.traktParams.apikey + '/' + $scope.traktParams.user + $scope.traktParams.extra + '?callback=JSON_CALLBACK';
+            var traktUrl = $scope.traktParams.baseUrl + $scope.traktParams.method;
 
-            $http.jsonp(traktUrl)
+            var req = {
+                method: 'POST',
+                url: traktUrl,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'trakt-api-version': '2',
+                    'trakt-api-key': $scope.traktParams.apikey
+                },
+                responseType: 'json'
+            }
+
+            $http(req)
                 .success(function(movies) {
                     $scope.movies = movies;
                     $scope.chooseMovie();
