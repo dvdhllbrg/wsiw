@@ -44,7 +44,7 @@ app.get('/api/movies/:source/:method/:user?', function(req, res) {
             });
         }
     } else if(req.params.source == 'trakt') {
-        var url = 'https://api.trakt.tv/';
+        var url = 'https://api-v2launch.trakt.tv/';
         if(req.params.method == 'trending') {
             url += 'movies/trending';
         } else if(req.params.method == 'watchlist') {

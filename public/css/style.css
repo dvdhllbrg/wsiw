@@ -104,6 +104,7 @@ button:hover {
     left: 50%;
     transform: translate(-50%);
     text-align: center;
+    width: 30%;
 }
 
 #sources {

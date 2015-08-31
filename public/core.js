@@ -1,7 +1,7 @@
 function MainController($scope, $http) {
     $scope.source = 'trending';
-    $scope.wl_user = 'iamhj';
-    $scope.c_user = 'iamhj';
+    $scope.wl_user = 'dvdhllbrg';
+    $scope.c_user = 'dvdhllbrg';
     $scope.movies = [];
     $scope.movie = null;
     $scope.sourceError = false;
@@ -17,7 +17,6 @@ function MainController($scope, $http) {
         $scope.showLoading = true;
         $scope.sourceSelectorPopup = false;
 
-        $scope.movies = [];
         var url = 'http://whatshouldiwat.ch/api/movies/';
 
         if($scope.source == 'top250' || $scope.source == 'rt') {
@@ -28,9 +27,11 @@ function MainController($scope, $http) {
             switch ($scope.source) {
                 case 'watchlist':
                     url = url + 'watchlist/' + $scope.wl_user;
+                    $scope.c_user = $scope.wl_user;
                     break;
                 case 'collection':
                     url = url + 'collection/' + $scope.c_user;
+                    $scope.wl_user = $scope.c_user;
                     break;
                 case 'trending':
                     url = url + 'trending';
@@ -40,10 +41,21 @@ function MainController($scope, $http) {
 
         $http.get(url)
             .success(function(movies) {
-                for(var i=0; i<movies.length; i++) {
-                    $scope.movies[i] = movies[i].movie;
+                if(movies.length > 0) {
+                    $scope.movies = [];
+                    for(var i=0; i<movies.length; i++) {
+                        $scope.movies[i] = movies[i].movie;
+                    }
+                    $scope.chooseMovie();
+                } else {
+                    $scope.sourceError = true;
+                    $scope.showLoading = false;
+                    if($scope.movies.length > 0) {
+                        $scope.sourceSelectorPopup = true;
+                    } else {
+                        $scope.showOverlay = false;
+                    }
                 }
-                $scope.chooseMovie();
             })
             .error(function(data) {
                 $scope.showLoading = false;
@@ -76,6 +88,16 @@ function MainController($scope, $http) {
                 });
         }
     };
+
+    $scope.traktUserSelected = function(focused) {
+        if(focused == 'watchlist') {
+            $scope.wl_user = '';
+            $scope.source = 'watchlist';
+        } else if(focused == 'collection') {
+            $scope.c_user = '';
+            $scope.source = 'collection';
+        }
+    }
 }
 
 angular.module('wsiw', []).controller('MainController', ['$scope', '$http', MainController]);
