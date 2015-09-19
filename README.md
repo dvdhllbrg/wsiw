@@ -7,5 +7,4 @@ Available [here](http://whatshouldiwat.ch).
 
 ##Todo:
 * Placeholders for when there is no information
-* Trailers
 * A lot more sources

@@ -1,4 +1,4 @@
-function MainController($scope, $http) {
+function MainController($scope, $http, $sce) {
     $scope.source = 'trending';
     $scope.wl_user = 'dvdhllbrg';
     $scope.c_user = 'dvdhllbrg';
@@ -16,6 +16,7 @@ function MainController($scope, $http) {
         $scope.showOverlay = true;
         $scope.showLoading = true;
         $scope.sourceSelectorPopup = false;
+        $scope.showTrailer = false;
 
         var url = 'http://whatshouldiwat.ch/api/movies/';
 
@@ -68,12 +69,20 @@ function MainController($scope, $http) {
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
         $scope.bodyBackground = {'background-image' : 'url(' + $scope.movie.images.fanart.full + ')'};
         $scope.setRatings();
+        $scope.setTrailerSrc();
         $scope.showLoading = false;
         $scope.showOverlay = false;
     };
 
+    $scope.setTrailerSrc = function() {
+        var videoId = $scope.movie.trailer.substring($scope.movie.trailer.indexOf('?v=')+3);
+        var trailer = 'https://youtube.com/embed/' + videoId + '/?enablejsapi=1';
+        console.log(trailer);
+        $scope.movie.trailerSrc = $sce.trustAsResourceUrl(trailer);
+    };
+
     $scope.setRatings = function() {
-        var url = 'http://www.omdbapi.com/?i=' + $scope.movie.imdb_id + '&tomatoes=true&callback=JSON_CALLBACK';
+        var url = 'http://www.omdbapi.com/?i=' + $scope.movie.ids.imdb + '&tomatoes=true&callback=JSON_CALLBACK';
         if(typeof $scope.movie.ratings == 'undefined') {
             $scope.movie.ratings = {};
         }
@@ -97,7 +106,24 @@ function MainController($scope, $http) {
             $scope.c_user = '';
             $scope.source = 'collection';
         }
-    }
+    };
+
+    $scope.hideAbout = function() {
+        setTimeout(function() {
+            if($scope.showAbout) {
+                $scope.showAbout = false; 
+                $scope.showOverlay = false;
+            }
+        }, 5);
+    };
+
+    $scope.hideTrailer = function() {
+        if($scope.showTrailer) {
+            $scope.showTrailer = false; 
+            document.getElementById('trailerFrame').contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
+            $scope.showOverlay = false;
+        }
+    };
 }
 
-angular.module('wsiw', []).controller('MainController', ['$scope', '$http', MainController]);
+angular.module('wsiw', ['angular-click-outside']).controller('MainController', ['$scope', '$http', '$sce', MainController]);
