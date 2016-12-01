@@ -75,10 +75,14 @@ function MainController($scope, $http, $sce) {
     };
 
     $scope.setTrailerSrc = function() {
-        var videoId = $scope.movie.trailer.substring($scope.movie.trailer.indexOf('?v=')+3);
-        var trailer = 'https://youtube.com/embed/' + videoId + '/?enablejsapi=1';
-        console.log(trailer);
-        $scope.movie.trailerSrc = $sce.trustAsResourceUrl(trailer);
+        console.log($scope.movie.trailer);
+        if($scope.movie.trailer !== null) {
+            var videoId = $scope.movie.trailer.substring($scope.movie.trailer.indexOf('?v=')+3);
+            var trailer = 'https://youtube.com/embed/' + videoId + '/?enablejsapi=1';
+            $scope.movie.trailerSrc = $sce.trustAsResourceUrl(trailer);
+        } else {
+            $scope.movie.trailerSrc = '';
+        }
     };
 
     $scope.setRatings = function() {
