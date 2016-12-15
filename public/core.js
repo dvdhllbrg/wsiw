@@ -18,7 +18,7 @@ function MainController($scope, $http, $sce) {
         $scope.sourceSelectorPopup = false;
         $scope.showTrailer = false;
 
-        var url = 'http://whatshouldiwat.ch/api/movies/';
+        var url = 'http://localhost:8081.ch/api/movies/';
 
         if($scope.source == 'top250' || $scope.source == 'rt') {
             url = url + 'local/' + $scope.source;
@@ -67,7 +67,7 @@ function MainController($scope, $http, $sce) {
 
     $scope.chooseMovie = function() {
         $scope.movie = $scope.movies[Math.floor(Math.random()*$scope.movies.length)];
-        $scope.bodyBackground = {'background-image' : 'url(' + $scope.movie.images.fanart.full + ')'};
+        $scope.setBodyBackground();
         $scope.setRatings();
         $scope.setTrailerSrc();
         $scope.showLoading = false;
@@ -101,6 +101,17 @@ function MainController($scope, $http, $sce) {
                 });
         }
     };
+
+    $scope.setBodyBackground = function() {
+        var url = 'http://webservice.fanart.tv/v3/movies/' + $scope.movie.ids.imdb + '8ca797c5369e4ba71df12eeacf72703a';
+        $http.json(url)
+            .success(function(fanart) {
+                $scope.bodyBackground = {'background-image' : 'url(' + fanart.moviebackground.url + ')'};
+            })
+            .error(function(data)) {
+                console.log('Error : ' + data);
+            });
+    }
 
     $scope.traktUserSelected = function(focused) {
         if(focused == 'watchlist') {
